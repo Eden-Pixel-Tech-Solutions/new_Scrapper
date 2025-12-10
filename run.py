@@ -1,4 +1,18 @@
+#!/usr/bin/env python3
 # run_realtime.py
+"""
+Production-ready real-time scraper + relevancy pipeline.
+
+Features:
+ - Playwright-based scraping (headless)
+ - ML relevancy (joblib model)
+ - Keyword matcher (existing Matcher)
+ - Global relevancy (global_relevancy.predict) -> stored in gem_tenders + Main_Relevency
+ - Batched upserts to gem_tenders and batched inserts to Main_Relevency
+ - CSV snapshots
+ - Graceful shutdown
+"""
+
 import asyncio
 import json
 import os
@@ -8,31 +22,42 @@ import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
+from typing import List, Tuple, Dict, Any, Optional
 
 import mysql.connector
 import pandas as pd
 from playwright.async_api import async_playwright
 
 # ---------------------------
-# CONFIG
+# CONFIG (tweak as necessary)
 # ---------------------------
 BASE_URL = "https://bidplus.gem.gov.in"
-SAVE_EVERY = 5
 QUEUE_MAXSIZE = 20000
 BATCH_SIZE = 500
-BATCH_TIMEOUT = 5.0
-
-DB_CONFIG = {
-    "host": "localhost",
-    "user": "root",
-    "password": "",
-    "database": "tender_automation_with_ai",
-    "autocommit": False,
-}
-
-CSV_SNAPSHOT_EVERY = 600
+BATCH_TIMEOUT = 5.0  # seconds
+CSV_SNAPSHOT_EVERY = 600  # seconds
 LOG_FILE = "realtime_scraper.log"
 
+# ThreadPool for DB operations (use multiple threads for parallel writes)
+DB_WORKER_THREADS = int(os.getenv("DB_WORKER_THREADS", "6"))
+
+# DB config (override via env vars if you like)
+DB_CONFIG = {
+    "host": os.getenv("DB_HOST", "localhost"),
+    "user": os.getenv("DB_USER", "root"),
+    "password": os.getenv("DB_PASSWORD", ""),
+    "database": os.getenv("DB_NAME", "tender_automation_with_ai"),
+    "autocommit": False,
+    "charset": "utf8mb4",
+    "use_unicode": True,
+}
+
+# Model / file paths (allow overrides)
+MODEL_FILE = os.getenv("MODEL_FILE", "data/processed/relevancy_model.pkl")
+VECT_FILE = os.getenv("VECT_FILE", "data/processed/vectorizer.pkl")
+GLOBAL_RELEVANCY_DIR = os.path.join(os.path.dirname(__file__), "relevency", "scripts")
+
+# Logging
 import logging
 
 logging.basicConfig(
@@ -46,14 +71,10 @@ logging.basicConfig(
 logger = logging.getLogger("realtime")
 
 # ---------------------------
-# AI MODEL LOADING (ML classifier)
+# Load ML relevance model (joblib)
 # ---------------------------
 import joblib
 
-MODEL_FILE = "data/processed/relevancy_model.pkl"
-VECT_FILE = "data/processed/vectorizer.pkl"
-
-# load model and vectorizer (ensure these files exist)
 try:
     model = joblib.load(MODEL_FILE)
     vectorizer = joblib.load(VECT_FILE)
@@ -62,7 +83,7 @@ except Exception:
     logger.exception("Failed to load ML model or vectorizer. Exiting.")
     raise
 
-def clean_text(txt):
+def clean_text(txt: Optional[str]) -> str:
     if txt is None:
         return ""
     txt = str(txt).lower()
@@ -70,7 +91,8 @@ def clean_text(txt):
     txt = re.sub(r"\s+", " ", txt).strip()
     return txt
 
-def predict_relevance(text):
+def predict_relevance(text: str) -> Tuple[int, float]:
+    """Return (pred_label, probability_of_positive)."""
     clean = clean_text(text)
     vec = vectorizer.transform([clean])
     pred = int(model.predict(vec)[0])
@@ -78,46 +100,72 @@ def predict_relevance(text):
     return pred, proba
 
 # ---------------------------
-# KEYWORD MATCHING MODEL (MATCHER) - load same as FastAPI
+# Keyword MATCHER (existing)
 # ---------------------------
 from app.matching.datastore import KeywordStore
 from app.matching.matcher import Matcher
 
-# Build data dir relative to this file so it matches FastAPI path
 BACKEND_DIR = os.path.join(os.path.dirname(__file__), "app")
 DATA_DIR = os.path.join(BACKEND_DIR, "data")
-
 DIAGNOSTIC_CSV = os.path.join(DATA_DIR, "keywords_diagnostic.csv")
 ENDO_CSV = os.path.join(DATA_DIR, "keywords_endo.csv")
+OVERALL_CSV = os.path.join(DATA_DIR, "keywords_sheet1.csv")
 
 STORE = KeywordStore()
-# Load CSVs only if present to avoid crashes; fail-fast if your environment requires them
 if os.path.exists(DIAGNOSTIC_CSV):
-    STORE.load_csv(DIAGNOSTIC_CSV, category="Diagnostic")
-    logger.info(f"Loaded Diagnostic keywords: {DIAGNOSTIC_CSV}")
+    try:
+        STORE.load_csv(DIAGNOSTIC_CSV, category="Diagnostic")
+        logger.info(f"Loaded Diagnostic keywords: {DIAGNOSTIC_CSV}")
+    except Exception:
+        logger.exception("Failed to load Diagnostic CSV.")
 else:
     logger.warning(f"Diagnostic CSV not found at {DIAGNOSTIC_CSV}")
 
 if os.path.exists(ENDO_CSV):
-    STORE.load_csv(ENDO_CSV, category="Endo")
-    logger.info(f"Loaded Endo keywords: {ENDO_CSV}")
+    try:
+        STORE.load_csv(ENDO_CSV, category="Endo")
+        logger.info(f"Loaded Endo keywords: {ENDO_CSV}")
+    except Exception:
+        logger.exception("Failed to load Endo CSV.")
 else:
     logger.warning(f"Endo CSV not found at {ENDO_CSV}")
+
+if os.path.exists(OVERALL_CSV):
+    try:
+        STORE.load_csv(OVERALL_CSV, category="Overall")
+        logger.info(f"Loaded Overall keywords: {OVERALL_CSV}")
+    except Exception:
+        logger.exception("Failed to load Overall CSV.")
+else:
+    logger.warning(f"Overall CSV not found at {OVERALL_CSV}")
 
 MATCHER = Matcher(STORE)
 logger.info("Matcher initialized with loaded KeywordStore.")
 
 # ---------------------------
-# SQL (upsert) - extended to include matching columns
+# Load global_relevancy.predict
 # ---------------------------
-# Columns inserted:
-# (page_no, bid_number, detail_url, items, quantity, department, start_date, end_date,
-#  relevance, relevance_score, match_count, match_relevency, matches, matches_status)
+# Ensure the directory is on sys.path so import works
+if GLOBAL_RELEVANCY_DIR not in sys.path:
+    sys.path.append(GLOBAL_RELEVANCY_DIR)
+
+try:
+    from global_relevancy import predict as global_predict  # type: ignore
+    logger.info("Loaded global_relevancy.predict successfully.")
+except Exception:
+    logger.exception("Failed to import global_relevancy.predict. Exiting.")
+    raise
+
+# ---------------------------
+# SQL - Extended UPSERT for gem_tenders (new columns appended)
+# Order must match tuples appended to rows
+# ---------------------------
 UPSERT_SQL = """
 INSERT INTO gem_tenders
   (page_no, bid_number, detail_url, items, quantity, department, start_date, end_date,
-   relevance, relevance_score, match_count, match_relevency, matches, matches_status)
-VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+   relevance, relevance_score, match_count, match_relevency, matches, matches_status,
+   relevency_result, main_relevency_score, dept)
+VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
 ON DUPLICATE KEY UPDATE
   page_no = VALUES(page_no),
   detail_url = VALUES(detail_url),
@@ -130,8 +178,18 @@ ON DUPLICATE KEY UPDATE
   match_count = VALUES(match_count),
   match_relevency = VALUES(match_relevency),
   matches = VALUES(matches),
-  matches_status = VALUES(matches_status)
+  matches_status = VALUES(matches_status),
+  relevency_result = VALUES(relevency_result),
+  main_relevency_score = VALUES(main_relevency_score),
+  dept = VALUES(dept)
 ;
+"""
+
+# SQL for inserting into Main_Relevency (batched)
+MAIN_RELEVANCY_INSERT_SQL = """
+INSERT INTO Main_Relevency
+  (bid_number, query, detected_category, relevancy_score, relevant, best_match, top_matches)
+VALUES (%s, %s, %s, %s, %s, %s, %s)
 """
 
 # ---------------------------
@@ -140,15 +198,14 @@ ON DUPLICATE KEY UPDATE
 SHUTDOWN = False
 
 # ---------------------------
-# DB FUNCTIONS
+# DB CONNECTION HELPERS
 # ---------------------------
 def db_connect():
+    # create new connection per thread
     return mysql.connector.connect(**DB_CONFIG)
 
-def db_execute_many(rows):
-    """
-    rows: list of tuples matching the UPSERT values order.
-    """
+def db_execute_many_upsert(rows: List[Tuple[Any, ...]]) -> int:
+    """Execute UPSERTs into gem_tenders. Returns number of rows processed."""
     if not rows:
         return 0
     conn = db_connect()
@@ -157,6 +214,28 @@ def db_execute_many(rows):
         cur.executemany(UPSERT_SQL, rows)
         conn.commit()
         return len(rows)
+    except Exception:
+        conn.rollback()
+        logger.exception("db_execute_many_upsert failed.")
+        raise
+    finally:
+        cur.close()
+        conn.close()
+
+def db_insert_main_relevancy(rows: List[Tuple[Any, ...]]) -> int:
+    """Insert rows into Main_Relevency (bid_number, query, detected_category, relevancy_score, relevant, best_match, top_matches)."""
+    if not rows:
+        return 0
+    conn = db_connect()
+    cur = conn.cursor()
+    try:
+        cur.executemany(MAIN_RELEVANCY_INSERT_SQL, rows)
+        conn.commit()
+        return len(rows)
+    except Exception:
+        conn.rollback()
+        logger.exception("db_insert_main_relevancy failed.")
+        raise
     finally:
         cur.close()
         conn.close()
@@ -177,7 +256,7 @@ async def apply_sorting(page):
     else:
         logger.warning("Sorting option not found.")
 
-async def extract_total_counts(page):
+async def extract_total_counts(page) -> Tuple[int, int]:
     await page.goto(f"{BASE_URL}/all-bids", timeout=0, wait_until="networkidle")
     await asyncio.sleep(1.5)
     await apply_sorting(page)
@@ -200,16 +279,29 @@ async def extract_total_counts(page):
 
     return total_records, total_pages
 
-async def scrape_single_page_to_rows(page, page_no):
+def safe_json_dumps(obj: Any) -> str:
+    try:
+        return json.dumps(obj, ensure_ascii=False)
+    except Exception:
+        try:
+            return json.dumps(str(obj), ensure_ascii=False)
+        except Exception:
+            return '""'
+
+async def scrape_single_page_to_rows(page, page_no: int):
     """
-    Scrape visible cards on `page` and return a list of tuples matching UPSERT_SQL order.
+    Scrape visible cards on `page` and return:
+      - gem_rows: list of tuples matching UPSERT_SQL order
+      - main_rows: list of tuples matching MAIN_RELEVANCY_INSERT_SQL
     """
+    # scroll a bit to ensure lazy elements load
     for _ in range(3):
         await page.mouse.wheel(0, 2000)
         await asyncio.sleep(0.2)
 
     cards = await page.query_selector_all("div.card")
-    rows = []
+    gem_rows = []
+    main_rows = []
 
     for c in cards:
         try:
@@ -235,10 +327,14 @@ async def scrape_single_page_to_rows(page, page_no):
             end_el = await c.query_selector("span.end_date")
             end_date = (await end_el.inner_text()).strip() if end_el else ""
 
-            # ---- AI relevance prediction (ML model) ----
-            pred, score = predict_relevance(items)
+            # ---- AI relevance prediction (ML classifier) ----
+            try:
+                pred, score = predict_relevance(items)
+            except Exception:
+                logger.exception("predict_relevance failed; defaulting to not relevant.")
+                pred, score = 0, 0.0
 
-            # ---- MATCHER keyword relevancy (same behavior as API) ----
+            # ---- KEYWORD MATCHER ----
             try:
                 match_result = MATCHER.analyze(items, category_filter="all")
             except Exception:
@@ -246,20 +342,35 @@ async def scrape_single_page_to_rows(page, page_no):
                 match_result = {}
 
             match_count = match_result.get("matched_count", len(match_result.get("matches", [])))
-            match_relevency = match_result.get("score_pct", 0)  # already 0-100 in API behavior
+            match_relevency = match_result.get("score_pct", 0)  # 0-100
             matches_list = match_result.get("matches", [])
-            # ensure JSON serializable
             try:
-                matches_json = json.dumps(matches_list, ensure_ascii=False)
+                matches_json = safe_json_dumps(matches_list)
             except Exception:
-                # fallback: store stringified minimal info
-                safe_matches = [{"phrase": m.get("phrase")} for m in matches_list if isinstance(m, dict)]
-                matches_json = json.dumps(safe_matches, ensure_ascii=False)
+                matches_json = safe_json_dumps([{"phrase": m.get("phrase")} for m in matches_list if isinstance(m, dict)])
 
             matches_status = "Yes" if match_count > 0 else "No"
 
-            # Build the tuple in the same order as UPSERT_SQL VALUES
-            rows.append((
+            # ---- GLOBAL RELEVANCY (embedding + special models) ----
+            try:
+                g = global_predict(items, top_k=5)
+                # normalize
+                global_score = float(g.get("relevancy_score", 0.0) or 0.0)
+                global_relevant = 1 if g.get("relevant", False) else 0
+                global_dept = g.get("detected_category") or ""
+                best_match_json = safe_json_dumps(g.get("best_match", {}))
+                top_matches_json = safe_json_dumps(g.get("top_matches", []))
+            except Exception:
+                logger.exception("global_predict failed; setting defaults.")
+                g = {}
+                global_score = 0.0
+                global_relevant = 0
+                global_dept = ""
+                best_match_json = safe_json_dumps({})
+                top_matches_json = safe_json_dumps([])
+
+            # Build gem_tenders tuple (must match UPSERT_SQL order)
+            gem_row = (
                 page_no,
                 bid_no,
                 detail_url,
@@ -274,24 +385,51 @@ async def scrape_single_page_to_rows(page, page_no):
                 match_relevency,
                 matches_json,
                 matches_status,
-            ))
+                global_relevant,       # relevency_result
+                global_score,          # main_relevency_score
+                global_dept            # dept
+            )
+            gem_rows.append(gem_row)
+
+            # Build Main_Relevency insert tuple:
+            main_row = (
+                bid_no,
+                items,
+                g.get("detected_category") or "",
+                float(g.get("relevancy_score", 0.0) or 0.0),
+                1 if g.get("relevant") else 0,
+                best_match_json,
+                top_matches_json
+            )
+            main_rows.append(main_row)
+
         except Exception:
-            # isolate problem to one card and continue
             logger.exception("Error scraping a card — skipping it.")
             continue
 
-    return rows
+    return gem_rows, main_rows
 
 # ---------------------------
 # SCRAPER WORKER
 # ---------------------------
-async def scraper_worker(queue: asyncio.Queue, interval_seconds=60):
+async def scraper_worker(queue: asyncio.Queue, interval_seconds: int = 60):
     global SHUTDOWN
     logger.info("Scraper starting...")
 
+    # Playwright context options for production:
+    playwright_launch_args = {
+        "channel": "chrome",
+        "headless": True,
+        "args": [
+            "--disable-blink-features=AutomationControlled",
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+            "--disable-dev-shm-usage",
+        ]
+    }
+
     async with async_playwright() as p:
-        browser = await p.chromium.launch(channel="chrome", headless=True,
-                                          args=["--disable-blink-features=AutomationControlled"])
+        browser = await p.chromium.launch(**playwright_launch_args)
         context = await browser.new_context()
         page = await context.new_page()
 
@@ -301,13 +439,15 @@ async def scraper_worker(queue: asyncio.Queue, interval_seconds=60):
                 logger.info(f"Found {total_records} records across {total_pages} pages.")
 
                 page_no = 1
-                rows = await scrape_single_page_to_rows(page, page_no)
+                gem_rows, main_rows = await scrape_single_page_to_rows(page, page_no)
 
-                for r in rows:
+                # enqueue gem_rows and main_rows together as a single item for consumer
+                for g_row, m_row in zip(gem_rows, main_rows):
                     try:
-                        queue.put_nowait(r)
+                        # item is a tuple of (gem_row, main_row)
+                        queue.put_nowait((g_row, m_row))
                     except asyncio.QueueFull:
-                        await queue.put(r)
+                        await queue.put((g_row, m_row))
 
                 while page_no < total_pages and not SHUTDOWN:
                     next_btn = await page.query_selector("#light-pagination a.next")
@@ -317,14 +457,14 @@ async def scraper_worker(queue: asyncio.Queue, interval_seconds=60):
                     await asyncio.sleep(1.2)
 
                     page_no += 1
-                    rows = await scrape_single_page_to_rows(page, page_no)
-
-                    for r in rows:
+                    gem_rows, main_rows = await scrape_single_page_to_rows(page, page_no)
+                    for g_row, m_row in zip(gem_rows, main_rows):
                         try:
-                            queue.put_nowait(r)
+                            queue.put_nowait((g_row, m_row))
                         except asyncio.QueueFull:
-                            await queue.put(r)
+                            await queue.put((g_row, m_row))
 
+                # go back to listing & sleep
                 await page.goto(f"{BASE_URL}/all-bids", timeout=0, wait_until="networkidle")
                 await asyncio.sleep(0.5)
 
@@ -342,34 +482,49 @@ async def scraper_worker(queue: asyncio.Queue, interval_seconds=60):
         await browser.close()
 
 # ---------------------------
-# DB CONSUMER
+# DB CONSUMER (non-blocking; uses executor)
 # ---------------------------
 async def db_consumer(queue: asyncio.Queue, executor: ThreadPoolExecutor):
     global SHUTDOWN
     logger.info("DB consumer starting...")
-    buffer = []
+    buffer_gem: List[Tuple[Any, ...]] = []
+    buffer_main: List[Tuple[Any, ...]] = []
     last_flush = time.time()
 
-    async def flush_buffer():
-        nonlocal buffer, last_flush
-        if not buffer:
-            last_flush = time.time()
-            return
-        rows_to_commit = buffer
-        buffer = []
+    async def flush_buffers():
+        nonlocal buffer_gem, buffer_main, last_flush
+        gem_to_commit = buffer_gem
+        main_to_commit = buffer_main
+        buffer_gem = []
+        buffer_main = []
 
+        # run both DB operations in the thread pool concurrently
+        results = []
         try:
-            processed = await asyncio.get_event_loop().run_in_executor(
-                executor, db_execute_many, rows_to_commit
-            )
-            logger.info(f"DB: upserted {processed} rows.")
-        except Exception:
-            logger.exception("DB upsert failed; batch dropped.")
+            loop = asyncio.get_event_loop()
+            tasks = []
+            if gem_to_commit:
+                tasks.append(loop.run_in_executor(executor, db_execute_many_upsert, gem_to_commit))
+            if main_to_commit:
+                tasks.append(loop.run_in_executor(executor, db_insert_main_relevancy, main_to_commit))
+            if tasks:
+                results = await asyncio.gather(*tasks, return_exceptions=True)
 
-        last_flush = time.time()
+                # handle exceptions in results
+                committed = 0
+                for r in results:
+                    if isinstance(r, Exception):
+                        logger.exception("DB worker raised an exception.")
+                    else:
+                        committed += int(r)
+                logger.info(f"DB: committed approx {committed} rows (gem + main).")
+        except Exception:
+            logger.exception("Exception while flushing buffers.")
+        finally:
+            last_flush = time.time()
 
     last_snapshot = time.time()
-    csv_rows_for_snapshot = []
+    csv_rows_for_snapshot: List[Tuple[Any, ...]] = []
 
     while not (SHUTDOWN and queue.empty()):
         try:
@@ -379,15 +534,18 @@ async def db_consumer(queue: asyncio.Queue, executor: ThreadPoolExecutor):
                 item = None
 
             if item:
-                buffer.append(item)
-                csv_rows_for_snapshot.append(item)
+                gem_row, main_row = item
+                buffer_gem.append(gem_row)
+                buffer_main.append(main_row)
+                csv_rows_for_snapshot.append(gem_row)
                 queue.task_done()
 
-            if len(buffer) >= BATCH_SIZE:
-                await flush_buffer()
+            # flush conditions
+            if len(buffer_gem) >= BATCH_SIZE or len(buffer_main) >= BATCH_SIZE:
+                await flush_buffers()
 
-            if buffer and (time.time() - last_flush) >= BATCH_TIMEOUT:
-                await flush_buffer()
+            if (time.time() - last_flush) >= BATCH_TIMEOUT and (buffer_gem or buffer_main):
+                await flush_buffers()
 
             if (time.time() - last_snapshot) >= CSV_SNAPSHOT_EVERY and csv_rows_for_snapshot:
                 ts = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -406,10 +564,14 @@ async def db_consumer(queue: asyncio.Queue, executor: ThreadPoolExecutor):
                     "match_relevency": r[11],
                     "matches": r[12],
                     "matches_status": r[13],
+                    "relevency_result": r[14],
+                    "main_relevency_score": r[15],
+                    "dept": r[16],
                 } for r in csv_rows_for_snapshot])
 
-                df.to_csv(f"snapshot_{ts}.csv", index=False)
-                logger.info(f"Snapshot saved: snapshot_{ts}.csv")
+                snapshot_file = f"snapshot_{ts}.csv"
+                df.to_csv(snapshot_file, index=False)
+                logger.info(f"Snapshot saved: {snapshot_file}")
                 csv_rows_for_snapshot = []
                 last_snapshot = time.time()
 
@@ -417,11 +579,17 @@ async def db_consumer(queue: asyncio.Queue, executor: ThreadPoolExecutor):
             logger.exception("DB consumer error.")
             await asyncio.sleep(1)
 
-    await flush_buffer()
+    # final flush
+    try:
+        if buffer_gem or buffer_main:
+            await flush_buffers()
+    except Exception:
+        logger.exception("Final DB flush failed.")
+
     logger.info("DB consumer shutting down.")
 
 # ---------------------------
-# SIGNALS
+# SIGNAL HANDLING
 # ---------------------------
 def handle_signal():
     global SHUTDOWN
@@ -433,21 +601,24 @@ def handle_signal():
 # ---------------------------
 async def main():
     queue = asyncio.Queue(maxsize=QUEUE_MAXSIZE)
-    executor = ThreadPoolExecutor(max_workers=4)
+    executor = ThreadPoolExecutor(max_workers=DB_WORKER_THREADS)
 
-    scraper_task = asyncio.create_task(scraper_worker(queue, interval_seconds=300))
+    # Scraper interval in seconds (tunable)
+    SCRAPER_INTERVAL = int(os.getenv("SCRAPER_INTERVAL", "300"))
+
+    scraper_task = asyncio.create_task(scraper_worker(queue, interval_seconds=SCRAPER_INTERVAL))
     consumer_task = asyncio.create_task(db_consumer(queue, executor))
 
     await asyncio.gather(scraper_task, consumer_task)
 
 if __name__ == "__main__":
     try:
-        # handle SIGTERM gracefully if available
+        # register signals
         for sig in ("SIGINT", "SIGTERM"):
             try:
                 asyncio.get_event_loop().add_signal_handler(getattr(signal, sig), handle_signal)
             except Exception:
-                # add_signal_handler may not be implemented on Windows event loop
+                # not all event loops support add_signal_handler (Windows)
                 pass
 
         asyncio.run(main())

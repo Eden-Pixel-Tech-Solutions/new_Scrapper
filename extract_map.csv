@@ -1,2 +1,3 @@
 pdf_path,json_path,ok,message
-D:\Tender System\TenderSystem - Copy\TEMP_WORKERS\pdf_W5\GEM_2025_B_6884844.pdf,D:\Tender System\TenderSystem - Copy\TEMP_WORKERS\out_W5\GEM_2025_B_6884844.json,1,OK
+D:\Tender System\TenderSystem - Copy\TEMP_WORKERS\pdf_W1\GEM_2025_B_6774734.pdf,D:\Tender System\TenderSystem - Copy\TEMP_WORKERS\out_W1\GEM_2025_B_6774734.json,0,[Errno 2] No such file or directory: 'D:\\Tender System\\TenderSystem - Copy\\TEMP_WORKERS\\pdf_W1\\GEM_2025_B_6774734.pdf'
+D:\Tender System\TenderSystem - Copy\TEMP_WORKERS\pdf_W1\GEM_2025_B_6834653.pdf,D:\Tender System\TenderSystem - Copy\TEMP_WORKERS\out_W1\GEM_2025_B_6834653.json,1,OK

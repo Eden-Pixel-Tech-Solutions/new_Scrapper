@@ -1,0 +1,684 @@
+2025-12-07 01:02:29,026 [INFO] Loaded ML relevancy model and vectorizer.
+2025-12-07 01:02:30,239 [INFO] Loaded Diagnostic keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_diagnostic.csv
+2025-12-07 01:02:30,259 [INFO] Loaded Endo keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_endo.csv
+2025-12-07 01:02:30,259 [INFO] Matcher initialized with loaded KeywordStore.
+2025-12-07 01:02:38,767 [INFO] Loading faiss with AVX2 support.
+2025-12-07 01:02:38,890 [INFO] Successfully loaded faiss with AVX2 support.
+2025-12-07 01:02:38,916 [INFO] Use pytorch device_name: cpu
+2025-12-07 01:02:38,917 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-07 01:02:43,489 [INFO] Use pytorch device_name: cpu
+2025-12-07 01:02:43,489 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-07 01:02:47,223 [INFO] Use pytorch device_name: cpu
+2025-12-07 01:02:47,223 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-07 01:02:51,198 [INFO] Loaded global_relevancy.predict successfully.
+2025-12-07 01:02:51,207 [INFO] Scraper starting...
+2025-12-07 01:02:51,208 [INFO] DB consumer starting...
+2025-12-07 01:03:12,514 [INFO] Applying sorting: Bid Start Date -> Latest
+2025-12-07 01:03:14,737 [INFO] Found 40583 records across 4059 pages.
+2025-12-07 01:03:18,022 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-07 01:03:23,762 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-07 01:03:29,241 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:03:34,535 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:03:39,578 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:03:45,180 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:03:51,168 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:03:56,369 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:04:01,529 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:04:06,595 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-07 01:04:12,577 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-07 01:04:17,715 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:04:23,172 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:04:28,361 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:04:34,096 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:04:40,107 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:04:45,532 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:04:51,263 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:04:57,101 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:05:02,390 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:05:08,299 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:05:13,435 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:05:18,644 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:05:23,941 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:05:29,287 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:05:34,397 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:05:39,680 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:05:45,630 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:05:50,869 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-07 01:05:56,562 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-07 01:06:02,098 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-07 01:06:07,906 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-07 01:06:12,986 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:06:18,151 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-07 01:06:23,237 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-07 01:06:29,013 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:06:34,862 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:06:40,628 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:06:46,094 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:06:51,265 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:06:56,944 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-07 01:07:02,703 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-07 01:07:08,037 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-07 01:07:13,801 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-07 01:07:19,030 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-07 01:07:24,692 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-07 01:07:29,753 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-07 01:07:35,229 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-07 01:07:41,114 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:07:46,611 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:07:52,058 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:07:57,594 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:08:02,626 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:08:08,145 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:08:13,300 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:08:18,863 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:08:24,309 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:08:30,093 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:08:36,048 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:08:41,258 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-07 01:08:46,893 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-07 01:08:52,647 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-07 01:08:58,228 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-07 01:09:03,600 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-07 01:09:09,315 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-07 01:09:15,211 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-07 01:09:20,553 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-07 01:09:26,267 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:09:31,546 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:09:37,382 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:09:43,234 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:09:48,719 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:09:53,880 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:09:59,402 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:10:05,345 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:10:11,118 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:10:16,954 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:10:22,854 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:10:28,400 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:10:33,443 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:10:38,933 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:10:44,799 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:10:50,545 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:10:56,283 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:11:02,049 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:11:07,520 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:11:13,364 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:11:19,367 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:11:25,273 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:11:31,351 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:11:36,708 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-07 01:11:42,173 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-07 01:11:47,850 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:11:53,701 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:11:59,061 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:12:04,619 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-07 01:12:10,457 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:12:16,111 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-07 01:12:21,844 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:48:56,005 [INFO] Loaded ML relevancy model and vectorizer.
+2025-12-10 22:48:57,318 [INFO] Loaded Diagnostic keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_diagnostic.csv
+2025-12-10 22:48:57,339 [INFO] Loaded Endo keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_endo.csv
+2025-12-10 22:48:57,339 [INFO] Matcher initialized with loaded KeywordStore.
+2025-12-10 22:50:04,129 [INFO] Loading faiss with AVX2 support.
+2025-12-10 22:50:04,697 [INFO] Successfully loaded faiss with AVX2 support.
+2025-12-10 22:50:04,808 [INFO] Use pytorch device_name: cpu
+2025-12-10 22:50:04,809 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 22:50:09,095 [INFO] Use pytorch device_name: cpu
+2025-12-10 22:50:09,096 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 22:50:13,329 [INFO] Use pytorch device_name: cpu
+2025-12-10 22:50:13,329 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 22:50:17,762 [INFO] Loaded global_relevancy.predict successfully.
+2025-12-10 22:50:17,766 [INFO] Scraper starting...
+2025-12-10 22:50:17,766 [INFO] DB consumer starting...
+2025-12-10 22:50:37,508 [INFO] Applying sorting: Bid Start Date -> Latest
+2025-12-10 22:50:39,700 [INFO] Found 42118 records across 4212 pages.
+2025-12-10 22:51:34,279 [INFO] Loaded ML relevancy model and vectorizer.
+2025-12-10 22:51:34,306 [INFO] Loaded Diagnostic keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_diagnostic.csv
+2025-12-10 22:51:34,310 [INFO] Loaded Endo keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_endo.csv
+2025-12-10 22:51:34,311 [INFO] Matcher initialized with loaded KeywordStore.
+2025-12-10 22:51:39,034 [INFO] Loading faiss with AVX2 support.
+2025-12-10 22:51:39,066 [INFO] Successfully loaded faiss with AVX2 support.
+2025-12-10 22:51:39,082 [INFO] Use pytorch device_name: cpu
+2025-12-10 22:51:39,083 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 22:51:42,776 [INFO] Use pytorch device_name: cpu
+2025-12-10 22:51:42,777 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 22:51:47,388 [INFO] Use pytorch device_name: cpu
+2025-12-10 22:51:47,388 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 22:51:50,917 [INFO] Loaded global_relevancy.predict successfully.
+2025-12-10 22:51:50,920 [INFO] Scraper starting...
+2025-12-10 22:51:50,921 [INFO] DB consumer starting...
+2025-12-10 22:51:55,764 [INFO] Applying sorting: Bid Start Date -> Latest
+2025-12-10 22:51:57,969 [INFO] Found 42118 records across 4212 pages.
+2025-12-10 22:52:00,409 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-10 22:52:05,970 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 22:52:11,205 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 22:52:16,673 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 22:52:22,465 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 22:52:27,822 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:52:33,244 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 22:52:38,721 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:52:44,305 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:52:49,905 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:52:55,523 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 22:53:00,894 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:53:06,237 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:53:11,463 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 22:53:16,513 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:53:21,640 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:53:26,831 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:53:32,382 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 22:53:37,947 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:53:43,552 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 22:53:48,962 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:53:54,589 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 22:54:00,579 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:54:06,600 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 22:54:11,905 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 22:54:16,991 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 22:54:22,073 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:54:27,224 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:54:32,651 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:54:38,238 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 22:54:43,402 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:54:48,901 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:54:54,028 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:54:59,316 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 22:55:04,987 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:55:10,250 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:55:15,323 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 22:55:20,440 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 22:55:25,687 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:00:54,091 [INFO] Loaded ML relevancy model and vectorizer.
+2025-12-10 23:00:54,185 [INFO] Loaded Diagnostic keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_diagnostic.csv
+2025-12-10 23:00:54,190 [INFO] Loaded Endo keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_endo.csv
+2025-12-10 23:00:54,194 [INFO] Matcher initialized with loaded KeywordStore.
+2025-12-10 23:01:02,168 [INFO] Loading faiss with AVX2 support.
+2025-12-10 23:01:02,201 [INFO] Successfully loaded faiss with AVX2 support.
+2025-12-10 23:01:02,219 [INFO] Use pytorch device_name: cpu
+2025-12-10 23:01:02,220 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 23:01:06,242 [INFO] Use pytorch device_name: cpu
+2025-12-10 23:01:06,243 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 23:01:09,994 [INFO] Use pytorch device_name: cpu
+2025-12-10 23:01:09,995 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 23:01:13,658 [INFO] Loaded global_relevancy.predict successfully.
+2025-12-10 23:01:13,660 [INFO] Scraper starting...
+2025-12-10 23:01:13,661 [INFO] DB consumer starting...
+2025-12-10 23:01:19,727 [INFO] Applying sorting: Bid Start Date -> Latest
+2025-12-10 23:01:22,143 [INFO] Received stop signal — shutting down...
+2025-12-10 23:04:16,738 [INFO] Loaded ML relevancy model and vectorizer.
+2025-12-10 23:04:16,848 [INFO] Loaded Diagnostic keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_diagnostic.csv
+2025-12-10 23:04:16,853 [INFO] Loaded Endo keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_endo.csv
+2025-12-10 23:04:17,016 [INFO] Loaded Overall keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_sheet1.csv
+2025-12-10 23:04:17,099 [INFO] Matcher initialized with loaded KeywordStore.
+2025-12-10 23:04:26,431 [INFO] Loading faiss with AVX2 support.
+2025-12-10 23:04:26,700 [INFO] Successfully loaded faiss with AVX2 support.
+2025-12-10 23:04:26,720 [INFO] Use pytorch device_name: cpu
+2025-12-10 23:04:26,721 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 23:04:31,188 [INFO] Use pytorch device_name: cpu
+2025-12-10 23:04:31,189 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 23:04:35,408 [INFO] Use pytorch device_name: cpu
+2025-12-10 23:04:35,409 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 23:04:40,277 [INFO] Loaded global_relevancy.predict successfully.
+2025-12-10 23:04:40,285 [INFO] Scraper starting...
+2025-12-10 23:04:40,287 [INFO] DB consumer starting...
+2025-12-10 23:04:45,815 [INFO] Applying sorting: Bid Start Date -> Latest
+2025-12-10 23:04:48,029 [INFO] Found 42122 records across 4213 pages.
+2025-12-10 23:05:21,169 [INFO] Loaded ML relevancy model and vectorizer.
+2025-12-10 23:05:21,219 [INFO] Loaded Diagnostic keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_diagnostic.csv
+2025-12-10 23:05:21,223 [INFO] Loaded Endo keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_endo.csv
+2025-12-10 23:05:21,363 [INFO] Loaded Overall keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_sheet1.csv
+2025-12-10 23:05:21,436 [INFO] Matcher initialized with loaded KeywordStore.
+2025-12-10 23:05:25,962 [INFO] Loading faiss with AVX2 support.
+2025-12-10 23:05:26,113 [INFO] Successfully loaded faiss with AVX2 support.
+2025-12-10 23:05:26,125 [INFO] Use pytorch device_name: cpu
+2025-12-10 23:05:26,125 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 23:05:29,758 [INFO] Use pytorch device_name: cpu
+2025-12-10 23:05:29,758 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 23:05:34,227 [INFO] Use pytorch device_name: cpu
+2025-12-10 23:05:34,228 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 23:05:37,790 [INFO] Loaded global_relevancy.predict successfully.
+2025-12-10 23:05:37,793 [INFO] Scraper starting...
+2025-12-10 23:05:37,794 [INFO] DB consumer starting...
+2025-12-10 23:05:42,735 [INFO] Applying sorting: Bid Start Date -> Latest
+2025-12-10 23:05:44,974 [INFO] Found 42122 records across 4213 pages.
+2025-12-10 23:05:47,310 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-10 23:05:53,060 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:05:58,611 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:06:04,303 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:06:10,106 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:06:15,607 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:06:20,886 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:06:25,965 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:06:31,897 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:06:37,414 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:06:43,182 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:06:48,306 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:06:53,900 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:06:59,032 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:07:04,139 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:07:10,070 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:07:15,243 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:07:21,062 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:07:26,527 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:07:32,099 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:07:37,747 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:07:43,904 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:07:49,371 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:07:55,148 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:08:00,358 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:08:06,265 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:08:11,876 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:08:17,631 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:08:22,898 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:08:28,575 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:08:34,030 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:08:39,897 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:08:45,726 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:08:51,348 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:08:56,633 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:09:02,441 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:09:08,041 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:09:13,521 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:09:19,293 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:09:25,269 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:09:31,228 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:09:37,220 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:09:42,246 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:09:48,056 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:13:13,493 [INFO] Loaded ML relevancy model and vectorizer.
+2025-12-10 23:13:13,541 [INFO] Loaded Diagnostic keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_diagnostic.csv
+2025-12-10 23:13:13,545 [INFO] Loaded Endo keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_endo.csv
+2025-12-10 23:13:13,765 [INFO] Loaded Overall keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_sheet1.csv
+2025-12-10 23:13:13,840 [INFO] Matcher initialized with loaded KeywordStore.
+2025-12-10 23:13:24,158 [INFO] Loading faiss with AVX2 support.
+2025-12-10 23:13:24,816 [INFO] Successfully loaded faiss with AVX2 support.
+2025-12-10 23:13:24,940 [INFO] Use pytorch device_name: cpu
+2025-12-10 23:13:24,940 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 23:13:28,955 [INFO] Use pytorch device_name: cpu
+2025-12-10 23:13:28,956 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 23:13:32,675 [INFO] Use pytorch device_name: cpu
+2025-12-10 23:13:32,676 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 23:13:36,662 [INFO] Loaded global_relevancy.predict successfully.
+2025-12-10 23:13:36,665 [INFO] Scraper starting...
+2025-12-10 23:13:36,666 [INFO] DB consumer starting...
+2025-12-10 23:13:44,430 [INFO] Received stop signal — shutting down...
+2025-12-10 23:14:35,347 [INFO] Loaded ML relevancy model and vectorizer.
+2025-12-10 23:14:36,043 [INFO] Loaded Diagnostic keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_diagnostic.csv
+2025-12-10 23:14:36,064 [INFO] Loaded Endo keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_endo.csv
+2025-12-10 23:14:36,217 [INFO] Loaded Overall keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_sheet1.csv
+2025-12-10 23:14:36,295 [INFO] Matcher initialized with loaded KeywordStore.
+2025-12-10 23:15:40,248 [INFO] Loading faiss with AVX2 support.
+2025-12-10 23:15:40,386 [INFO] Successfully loaded faiss with AVX2 support.
+2025-12-10 23:15:40,394 [INFO] Use pytorch device_name: cpu
+2025-12-10 23:15:40,395 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 23:15:44,304 [INFO] Use pytorch device_name: cpu
+2025-12-10 23:15:44,305 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 23:15:48,304 [INFO] Use pytorch device_name: cpu
+2025-12-10 23:15:48,305 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-10 23:15:51,959 [INFO] Loaded global_relevancy.predict successfully.
+2025-12-10 23:15:51,961 [INFO] Scraper starting...
+2025-12-10 23:15:51,961 [INFO] DB consumer starting...
+2025-12-10 23:15:57,908 [INFO] Applying sorting: Bid Start Date -> Latest
+2025-12-10 23:16:00,147 [INFO] Found 42123 records across 4213 pages.
+2025-12-10 23:16:02,410 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-10 23:16:07,842 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:16:13,821 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:16:18,954 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:16:24,025 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:16:29,513 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:16:35,277 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:16:40,835 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:16:46,505 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:16:51,698 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:16:57,625 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:17:03,159 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:17:08,636 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:17:14,297 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:17:19,651 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:17:25,106 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:17:30,650 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:17:36,614 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:17:41,805 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:17:47,409 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:17:52,524 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:17:58,284 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:18:03,695 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:18:09,180 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:18:14,624 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:18:19,936 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:18:25,845 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:18:31,551 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:18:36,950 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:18:42,762 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:18:48,568 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:18:54,068 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:18:59,302 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:19:04,940 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:19:10,885 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:19:16,873 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:19:22,323 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:19:27,473 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:19:32,947 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:19:38,034 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:19:43,644 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:19:49,495 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:19:54,941 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:20:01,204 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:20:06,795 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:20:12,200 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:20:17,467 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:20:23,324 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:20:29,304 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:20:34,703 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:20:40,711 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:20:46,164 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:20:51,744 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:20:57,011 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:21:02,901 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:21:08,529 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:21:13,795 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:21:19,554 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:21:25,159 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:21:30,179 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:21:35,551 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:21:41,136 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:21:46,757 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:21:52,045 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:21:57,613 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:22:02,637 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:22:08,186 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:22:13,467 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:22:19,270 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:22:24,512 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:22:29,942 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:22:35,698 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:22:41,240 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:22:46,458 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:22:52,004 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:22:57,755 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:23:03,268 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:23:08,722 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:23:14,390 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:23:20,109 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:23:25,476 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:23:30,770 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:23:36,402 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:23:41,735 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:23:47,682 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:23:52,889 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:23:58,852 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:24:04,007 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:24:09,502 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:24:15,026 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:24:20,303 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:24:26,131 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:24:31,376 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:24:36,972 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:24:42,734 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:24:48,435 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:24:53,749 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:24:58,807 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:25:04,611 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:25:10,066 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:25:15,154 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:25:20,681 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:25:26,365 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:25:31,778 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:25:37,002 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:25:42,763 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:25:48,536 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:25:52,192 [INFO] Snapshot saved: snapshot_2025-12-10_23-25-52.csv
+2025-12-10 23:25:53,853 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:25:59,275 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:26:04,393 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:26:10,073 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:26:16,056 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:26:21,635 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:26:27,448 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:26:32,493 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:26:37,955 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:26:43,496 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:26:48,618 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:26:54,100 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:26:59,391 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:27:04,715 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:27:10,187 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:27:15,727 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:27:21,540 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:27:27,062 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:27:32,824 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:27:38,081 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:27:43,853 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:27:49,772 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:27:55,450 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:28:00,772 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:28:06,075 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:28:11,719 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:28:17,277 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:28:22,655 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:28:28,394 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:28:33,992 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:28:39,475 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:28:45,314 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:28:50,452 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:28:55,910 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:29:01,854 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:29:07,207 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:29:12,815 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:29:18,561 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:29:23,897 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:29:29,006 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:29:34,796 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:29:40,237 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:29:45,770 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:29:50,893 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:29:56,182 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:30:02,261 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:30:07,841 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:30:13,601 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:30:18,704 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:30:23,787 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:30:29,449 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:30:35,034 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:30:40,617 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:30:46,018 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:30:51,654 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:30:56,699 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:31:02,222 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:31:07,371 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:31:12,892 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:31:18,653 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:31:24,424 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:31:30,308 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:31:36,127 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:31:42,014 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:31:47,608 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:31:53,510 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:31:59,252 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:32:05,281 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:32:11,307 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:32:16,898 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:32:22,895 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:32:27,922 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:32:33,303 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:32:39,256 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:32:44,761 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:32:50,283 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:32:55,900 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:33:01,869 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:33:07,235 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:33:13,034 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:33:18,102 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:33:23,315 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:33:29,369 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:33:35,415 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:33:40,665 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:33:46,058 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:33:51,204 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:33:56,862 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:34:02,082 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:34:07,170 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:34:12,864 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:34:18,554 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:34:24,140 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:34:30,177 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:34:35,434 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:34:41,301 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:34:47,209 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:34:52,466 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:34:58,274 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:35:03,775 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:35:09,709 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:35:15,317 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:35:21,304 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:35:27,270 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:35:32,645 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:35:38,356 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:35:43,922 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:35:49,483 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:35:53,239 [INFO] Snapshot saved: snapshot_2025-12-10_23-35-53.csv
+2025-12-10 23:35:55,270 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:36:01,195 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:36:06,658 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:36:12,053 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:36:17,818 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:36:23,226 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:36:28,392 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:36:34,106 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:36:39,351 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:36:44,688 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:36:50,226 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:36:55,357 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:37:00,435 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:37:06,228 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:37:11,585 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:37:17,110 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:37:22,620 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:37:28,405 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:37:33,690 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:37:39,556 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:37:45,593 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:37:51,150 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:37:56,328 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:38:01,896 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:38:07,234 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:38:12,666 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:38:18,425 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:38:23,509 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:38:29,501 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:38:34,651 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:38:40,046 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:38:45,284 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:38:51,018 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:38:56,904 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:39:02,505 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:39:07,627 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:39:13,676 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:39:19,086 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:39:24,621 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:39:29,985 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:39:35,932 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:39:41,091 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:39:46,974 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:39:52,776 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:39:58,281 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:40:04,074 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:40:09,648 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:40:14,946 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:40:20,458 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:40:26,022 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:40:31,213 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:40:37,138 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:40:42,369 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:40:47,907 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:40:53,270 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:40:58,979 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:41:04,359 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:41:10,030 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:41:15,371 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:41:21,090 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:41:26,415 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:41:31,929 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:41:37,877 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:41:43,215 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:41:48,435 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:41:53,955 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:41:59,884 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:42:05,694 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:42:11,478 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:42:17,310 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:42:22,389 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:42:27,419 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:42:33,327 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:42:38,485 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:42:44,389 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:42:49,874 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:42:55,668 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:43:01,433 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:43:06,685 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:43:12,767 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:43:18,306 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:43:23,802 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:43:29,458 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:43:34,978 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:43:40,627 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:43:46,235 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:43:51,510 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:43:57,270 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:44:03,223 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:44:08,776 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:44:14,839 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:44:20,755 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:44:26,512 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:44:31,840 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:44:37,676 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:44:42,929 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:44:48,653 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:44:53,938 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:44:59,656 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:45:04,889 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:45:10,572 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:45:15,636 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:45:21,270 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:45:27,021 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:45:32,603 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:45:38,035 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:45:43,821 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:45:48,897 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:45:53,366 [INFO] Snapshot saved: snapshot_2025-12-10_23-45-53.csv
+2025-12-10 23:45:54,434 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:46:00,359 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:46:05,771 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:46:11,338 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:46:16,728 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:46:21,928 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:46:27,247 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:46:33,180 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:46:38,275 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:46:43,782 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:46:49,325 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:46:54,739 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:47:00,398 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:47:05,505 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:47:10,993 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:47:16,749 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:47:22,255 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:47:28,125 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:47:33,863 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:47:39,383 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:47:45,256 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:47:51,136 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:47:56,584 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:48:02,430 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:48:08,168 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:48:13,648 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:48:19,651 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:48:25,497 [INFO] DB: committed approx 22 rows (gem + main).
+2025-12-10 23:48:31,401 [INFO] DB: committed approx 38 rows (gem + main).
+2025-12-10 23:48:36,906 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:48:42,073 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:48:48,055 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:48:53,385 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:48:58,753 [INFO] DB: committed approx 40 rows (gem + main).
+2025-12-10 23:49:04,059 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:49:10,062 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-10 23:55:53,764 [INFO] Snapshot saved: snapshot_2025-12-10_23-55-53.csv
