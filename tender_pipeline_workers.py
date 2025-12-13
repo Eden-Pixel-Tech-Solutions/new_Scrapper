@@ -142,6 +142,7 @@ def save_doc_record(bid_number, detail_url, pdf_url, pdf_path, json_path):
         if conn:
             conn.close()
 
+
 # ---------------------------
 # PDF URL extraction (Playwright)
 # ---------------------------
@@ -375,6 +376,14 @@ def process_tender_job(row: dict, worker_idx: int):
 
         # 7) save DB record
         save_doc_record(bid, detail_url, pdf_url, str(dest_path), str(final_json_path))
+        
+        try:
+            persistent_pdf = PDF_DIR / dest_path.name
+            if persistent_pdf.exists():
+                persistent_pdf.unlink()
+                logger.info("[%s] Deleted persistent PDF %s", worker_name, persistent_pdf)
+        except Exception:
+            logger.exception("[%s] Failed to delete persistent PDF", worker_name)
 
         logger.info("[%s] Completed job for %s -> %s", worker_name, bid, final_json_path)
         return True
