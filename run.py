@@ -354,12 +354,22 @@ async def scrape_single_page_to_rows(page, page_no: int):
             # ---- GLOBAL RELEVANCY (embedding + special models) ----
             try:
                 g = global_predict(items, top_k=5)
-                # normalize
-                global_score = float(g.get("relevancy_score", 0.0) or 0.0)
-                global_relevant = 1 if g.get("relevant", False) else 0
-                global_dept = g.get("detected_category") or ""
-                best_match_json = safe_json_dumps(g.get("best_match", {}))
-                top_matches_json = safe_json_dumps(g.get("top_matches", []))
+
+                # NEW OUTPUT FORMAT SUPPORT (results[])
+                query_result = {}
+                if isinstance(g, dict):
+                    results = g.get("results", [])
+                    if isinstance(results, list) and results:
+                        query_result = results[0]
+
+                global_score = float(query_result.get("relevancy_score", 0.0) or 0.0)
+                global_dept = query_result.get("detected_category") or ""
+
+                # relevancy flag derived from score
+                global_relevant = 1 if global_score > 0 else 0
+
+                best_match_json = safe_json_dumps(query_result.get("best_match", {}))
+                top_matches_json = safe_json_dumps(query_result.get("top_matches", []))
             except Exception:
                 logger.exception("global_predict failed; setting defaults.")
                 g = {}
@@ -395,12 +405,13 @@ async def scrape_single_page_to_rows(page, page_no: int):
             main_row = (
                 bid_no,
                 items,
-                g.get("detected_category") or "",
-                float(g.get("relevancy_score", 0.0) or 0.0),
-                1 if g.get("relevant") else 0,
+                global_dept,
+                global_score,
+                global_relevant,
                 best_match_json,
                 top_matches_json
             )
+
             main_rows.append(main_row)
 
         except Exception:

@@ -535,9 +535,5 @@ document.getElementById("query").addEventListener("keydown", function(e) {
 </html>
 """
 
-
-# --------------------------------------------------
-# RUN SERVER
-# --------------------------------------------------
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
