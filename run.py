@@ -13,6 +13,14 @@ Features:
  - Graceful shutdown
 """
 
+import os
+
+# Set environment variables to prevent segmentation faults caused by OpenMP/MKL conflicts
+# This must be done BEFORE importing numpy/torch/pandas
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+
 import asyncio
 import json
 import os
@@ -83,6 +91,7 @@ except Exception:
     logger.exception("Failed to load ML model or vectorizer. Exiting.")
     raise
 
+
 def clean_text(txt: Optional[str]) -> str:
     if txt is None:
         return ""
@@ -91,6 +100,7 @@ def clean_text(txt: Optional[str]) -> str:
     txt = re.sub(r"\s+", " ", txt).strip()
     return txt
 
+
 def predict_relevance(text: str) -> Tuple[int, float]:
     """Return (pred_label, probability_of_positive)."""
     clean = clean_text(text)
@@ -98,6 +108,7 @@ def predict_relevance(text: str) -> Tuple[int, float]:
     pred = int(model.predict(vec)[0])
     proba = float(model.predict_proba(vec)[0][1])
     return pred, proba
+
 
 # ---------------------------
 # Keyword MATCHER (existing)
@@ -151,6 +162,7 @@ if GLOBAL_RELEVANCY_DIR not in sys.path:
 
 try:
     from global_relevancy import predict as global_predict  # type: ignore
+
     logger.info("Loaded global_relevancy.predict successfully.")
 except Exception:
     logger.exception("Failed to import global_relevancy.predict. Exiting.")
@@ -197,12 +209,14 @@ VALUES (%s, %s, %s, %s, %s, %s, %s)
 # ---------------------------
 SHUTDOWN = False
 
+
 # ---------------------------
 # DB CONNECTION HELPERS
 # ---------------------------
 def db_connect():
     # create new connection per thread
     return mysql.connector.connect(**DB_CONFIG)
+
 
 def db_execute_many_upsert(rows: List[Tuple[Any, ...]]) -> int:
     """Execute UPSERTs into gem_tenders. Returns number of rows processed."""
@@ -222,6 +236,7 @@ def db_execute_many_upsert(rows: List[Tuple[Any, ...]]) -> int:
         cur.close()
         conn.close()
 
+
 def db_insert_main_relevancy(rows: List[Tuple[Any, ...]]) -> int:
     """Insert rows into Main_Relevency (bid_number, query, detected_category, relevancy_score, relevant, best_match, top_matches)."""
     if not rows:
@@ -240,6 +255,7 @@ def db_insert_main_relevancy(rows: List[Tuple[Any, ...]]) -> int:
         cur.close()
         conn.close()
 
+
 # ---------------------------
 # SCRAPER UTILITIES
 # ---------------------------
@@ -256,6 +272,7 @@ async def apply_sorting(page):
     else:
         logger.warning("Sorting option not found.")
 
+
 async def extract_total_counts(page) -> Tuple[int, int]:
     await page.goto(f"{BASE_URL}/all-bids", timeout=0, wait_until="networkidle")
     await asyncio.sleep(1.5)
@@ -271,13 +288,16 @@ async def extract_total_counts(page) -> Tuple[int, int]:
         if m:
             total_records = int(m.group(1))
 
-    last_page_el = await page.query_selector("#light-pagination a.page-link:nth-last-child(2)")
+    last_page_el = await page.query_selector(
+        "#light-pagination a.page-link:nth-last-child(2)"
+    )
     if last_page_el:
         t = (await last_page_el.inner_text()).strip()
         if t.isdigit():
             total_pages = int(t)
 
     return total_records, total_pages
+
 
 def safe_json_dumps(obj: Any) -> str:
     try:
@@ -287,6 +307,7 @@ def safe_json_dumps(obj: Any) -> str:
             return json.dumps(str(obj), ensure_ascii=False)
         except Exception:
             return '""'
+
 
 async def scrape_single_page_to_rows(page, page_no: int):
     """
@@ -310,13 +331,19 @@ async def scrape_single_page_to_rows(page, page_no: int):
             if not bid_no:
                 continue
 
-            detail_url = BASE_URL + "/" + (await bid_link.get_attribute("href")).lstrip("/")
+            detail_url = (
+                BASE_URL + "/" + (await bid_link.get_attribute("href")).lstrip("/")
+            )
 
             item_el = await c.query_selector(".card-body .col-md-4 .row:nth-child(1) a")
             items = (await item_el.inner_text()).strip() if item_el else ""
 
             qty_el = await c.query_selector(".card-body .col-md-4 .row:nth-child(2)")
-            quantity = (await qty_el.inner_text()).replace("Quantity:", "").strip() if qty_el else ""
+            quantity = (
+                (await qty_el.inner_text()).replace("Quantity:", "").strip()
+                if qty_el
+                else ""
+            )
 
             dept_el = await c.query_selector(".card-body .col-md-5 .row:nth-child(2)")
             department = (await dept_el.inner_text()).strip() if dept_el else ""
@@ -331,23 +358,35 @@ async def scrape_single_page_to_rows(page, page_no: int):
             try:
                 pred, score = predict_relevance(items)
             except Exception:
-                logger.exception("predict_relevance failed; defaulting to not relevant.")
+                logger.exception(
+                    "predict_relevance failed; defaulting to not relevant."
+                )
                 pred, score = 0, 0.0
 
             # ---- KEYWORD MATCHER ----
             try:
                 match_result = MATCHER.analyze(items, category_filter="all")
             except Exception:
-                logger.exception("Matcher analyze failed for items; falling back to no-matches.")
+                logger.exception(
+                    "Matcher analyze failed for items; falling back to no-matches."
+                )
                 match_result = {}
 
-            match_count = match_result.get("matched_count", len(match_result.get("matches", [])))
+            match_count = match_result.get(
+                "matched_count", len(match_result.get("matches", []))
+            )
             match_relevency = match_result.get("score_pct", 0)  # 0-100
             matches_list = match_result.get("matches", [])
             try:
                 matches_json = safe_json_dumps(matches_list)
             except Exception:
-                matches_json = safe_json_dumps([{"phrase": m.get("phrase")} for m in matches_list if isinstance(m, dict)])
+                matches_json = safe_json_dumps(
+                    [
+                        {"phrase": m.get("phrase")}
+                        for m in matches_list
+                        if isinstance(m, dict)
+                    ]
+                )
 
             matches_status = "Yes" if match_count > 0 else "No"
 
@@ -395,9 +434,9 @@ async def scrape_single_page_to_rows(page, page_no: int):
                 match_relevency,
                 matches_json,
                 matches_status,
-                global_relevant,       # relevency_result
-                global_score,          # main_relevency_score
-                global_dept            # dept
+                global_relevant,  # relevency_result
+                global_score,  # main_relevency_score
+                global_dept,  # dept
             )
             gem_rows.append(gem_row)
 
@@ -409,7 +448,7 @@ async def scrape_single_page_to_rows(page, page_no: int):
                 global_score,
                 global_relevant,
                 best_match_json,
-                top_matches_json
+                top_matches_json,
             )
 
             main_rows.append(main_row)
@@ -419,6 +458,7 @@ async def scrape_single_page_to_rows(page, page_no: int):
             continue
 
     return gem_rows, main_rows
+
 
 # ---------------------------
 # SCRAPER WORKER
@@ -436,7 +476,7 @@ async def scraper_worker(queue: asyncio.Queue, interval_seconds: int = 60):
             "--no-sandbox",
             "--disable-setuid-sandbox",
             "--disable-dev-shm-usage",
-        ]
+        ],
     }
 
     async with async_playwright() as p:
@@ -447,7 +487,9 @@ async def scraper_worker(queue: asyncio.Queue, interval_seconds: int = 60):
         while not SHUTDOWN:
             try:
                 total_records, total_pages = await extract_total_counts(page)
-                logger.info(f"Found {total_records} records across {total_pages} pages.")
+                logger.info(
+                    f"Found {total_records} records across {total_pages} pages."
+                )
 
                 page_no = 1
                 gem_rows, main_rows = await scrape_single_page_to_rows(page, page_no)
@@ -468,7 +510,9 @@ async def scraper_worker(queue: asyncio.Queue, interval_seconds: int = 60):
                     await asyncio.sleep(1.2)
 
                     page_no += 1
-                    gem_rows, main_rows = await scrape_single_page_to_rows(page, page_no)
+                    gem_rows, main_rows = await scrape_single_page_to_rows(
+                        page, page_no
+                    )
                     for g_row, m_row in zip(gem_rows, main_rows):
                         try:
                             queue.put_nowait((g_row, m_row))
@@ -476,7 +520,9 @@ async def scraper_worker(queue: asyncio.Queue, interval_seconds: int = 60):
                             await queue.put((g_row, m_row))
 
                 # go back to listing & sleep
-                await page.goto(f"{BASE_URL}/all-bids", timeout=0, wait_until="networkidle")
+                await page.goto(
+                    f"{BASE_URL}/all-bids", timeout=0, wait_until="networkidle"
+                )
                 await asyncio.sleep(0.5)
 
                 logger.info(f"Scraper sleeping for {interval_seconds}s.")
@@ -491,6 +537,7 @@ async def scraper_worker(queue: asyncio.Queue, interval_seconds: int = 60):
 
         logger.info("Scraper shutting down...")
         await browser.close()
+
 
 # ---------------------------
 # DB CONSUMER (non-blocking; uses executor)
@@ -515,9 +562,17 @@ async def db_consumer(queue: asyncio.Queue, executor: ThreadPoolExecutor):
             loop = asyncio.get_event_loop()
             tasks = []
             if gem_to_commit:
-                tasks.append(loop.run_in_executor(executor, db_execute_many_upsert, gem_to_commit))
+                tasks.append(
+                    loop.run_in_executor(
+                        executor, db_execute_many_upsert, gem_to_commit
+                    )
+                )
             if main_to_commit:
-                tasks.append(loop.run_in_executor(executor, db_insert_main_relevancy, main_to_commit))
+                tasks.append(
+                    loop.run_in_executor(
+                        executor, db_insert_main_relevancy, main_to_commit
+                    )
+                )
             if tasks:
                 results = await asyncio.gather(*tasks, return_exceptions=True)
 
@@ -555,30 +610,39 @@ async def db_consumer(queue: asyncio.Queue, executor: ThreadPoolExecutor):
             if len(buffer_gem) >= BATCH_SIZE or len(buffer_main) >= BATCH_SIZE:
                 await flush_buffers()
 
-            if (time.time() - last_flush) >= BATCH_TIMEOUT and (buffer_gem or buffer_main):
+            if (time.time() - last_flush) >= BATCH_TIMEOUT and (
+                buffer_gem or buffer_main
+            ):
                 await flush_buffers()
 
-            if (time.time() - last_snapshot) >= CSV_SNAPSHOT_EVERY and csv_rows_for_snapshot:
+            if (
+                time.time() - last_snapshot
+            ) >= CSV_SNAPSHOT_EVERY and csv_rows_for_snapshot:
                 ts = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-                df = pd.DataFrame([{
-                    "page_no": r[0],
-                    "bid_number": r[1],
-                    "detail_url": r[2],
-                    "items": r[3],
-                    "quantity": r[4],
-                    "department": r[5],
-                    "start_date": r[6],
-                    "end_date": r[7],
-                    "relevance": r[8],
-                    "relevance_score": r[9],
-                    "match_count": r[10],
-                    "match_relevency": r[11],
-                    "matches": r[12],
-                    "matches_status": r[13],
-                    "relevency_result": r[14],
-                    "main_relevency_score": r[15],
-                    "dept": r[16],
-                } for r in csv_rows_for_snapshot])
+                df = pd.DataFrame(
+                    [
+                        {
+                            "page_no": r[0],
+                            "bid_number": r[1],
+                            "detail_url": r[2],
+                            "items": r[3],
+                            "quantity": r[4],
+                            "department": r[5],
+                            "start_date": r[6],
+                            "end_date": r[7],
+                            "relevance": r[8],
+                            "relevance_score": r[9],
+                            "match_count": r[10],
+                            "match_relevency": r[11],
+                            "matches": r[12],
+                            "matches_status": r[13],
+                            "relevency_result": r[14],
+                            "main_relevency_score": r[15],
+                            "dept": r[16],
+                        }
+                        for r in csv_rows_for_snapshot
+                    ]
+                )
 
                 snapshot_file = f"snapshot_{ts}.csv"
                 df.to_csv(snapshot_file, index=False)
@@ -599,6 +663,7 @@ async def db_consumer(queue: asyncio.Queue, executor: ThreadPoolExecutor):
 
     logger.info("DB consumer shutting down.")
 
+
 # ---------------------------
 # SIGNAL HANDLING
 # ---------------------------
@@ -606,6 +671,7 @@ def handle_signal():
     global SHUTDOWN
     logger.info("Received stop signal — shutting down...")
     SHUTDOWN = True
+
 
 # ---------------------------
 # MAIN
@@ -617,17 +683,22 @@ async def main():
     # Scraper interval in seconds (tunable)
     SCRAPER_INTERVAL = int(os.getenv("SCRAPER_INTERVAL", "300"))
 
-    scraper_task = asyncio.create_task(scraper_worker(queue, interval_seconds=SCRAPER_INTERVAL))
+    scraper_task = asyncio.create_task(
+        scraper_worker(queue, interval_seconds=SCRAPER_INTERVAL)
+    )
     consumer_task = asyncio.create_task(db_consumer(queue, executor))
 
     await asyncio.gather(scraper_task, consumer_task)
+
 
 if __name__ == "__main__":
     try:
         # register signals
         for sig in ("SIGINT", "SIGTERM"):
             try:
-                asyncio.get_event_loop().add_signal_handler(getattr(signal, sig), handle_signal)
+                asyncio.get_event_loop().add_signal_handler(
+                    getattr(signal, sig), handle_signal
+                )
             except Exception:
                 # not all event loops support add_signal_handler (Windows)
                 pass
