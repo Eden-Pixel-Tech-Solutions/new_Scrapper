@@ -1025,7 +1025,7 @@ def predict_single(query: str, top_k: int = TOP_K) -> Dict[str, Any]:
             print(f"  → Error running endo_relevancy: {e}")
 
     # -------------------- global fallback ----------------------------
-    q_emb = MODEL.encode([query], normalize_embeddings=True)[0]
+    q_emb = MODEL.encode([query], normalize_embeddings=True, show_progress_bar=False)[0]
     sims = np.dot(EMB, q_emb)
 
     results = []

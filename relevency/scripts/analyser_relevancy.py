@@ -128,7 +128,7 @@ def predict_relevancy(query, top_k=5):
       }
     """
     # 1) embedding
-    q_emb = smodel.encode(query, normalize_embeddings=True)
+    q_emb = smodel.encode(query, normalize_embeddings=True, show_progress_bar=False)
 
     # 2) candidate retrieval (FAISS or linear)
     if use_faiss:
