@@ -6,11 +6,13 @@ from sentence_transformers import SentenceTransformer
 import joblib, re, math
 
 # Optional faiss
-try:
-    import faiss
-    HAS_FAISS = True
-except Exception:
-    HAS_FAISS = False
+# HAS_FAISS explicitly disabled to prevent segmentation faults (AVX512 compatibility)
+HAS_FAISS = False
+# try:
+#     import faiss
+#     HAS_FAISS = True
+# except Exception:
+#     HAS_FAISS = False
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 EMB_DIR = os.path.join(ROOT, "data", "embeddings")
@@ -21,15 +23,17 @@ TYPE_CLF_FILE = os.path.join(EMB_DIR, "type_clf.joblib")
 VECT_FILE = os.path.join(EMB_DIR, "type_tfidf.joblib")
 
 # ---------- TUNABLE HYPERPARAMETERS ----------
-TYPE_WEIGHT = 0.3        # contribution of type confidence to final_score
-TOKEN_WEIGHT = 0.2       # contribution of token overlap
-EMB_WEIGHT = 1.0          # embedding weight (kept 1.0 for readability)
+TYPE_WEIGHT = 0.3  # contribution of type confidence to final_score
+TOKEN_WEIGHT = 0.2  # contribution of token overlap
+EMB_WEIGHT = 1.0  # embedding weight (kept 1.0 for readability)
 # Logistic mapping parameters (maps raw final_score to 0..1)
-LOGISTIC_CENTER = 0.85    # center (mu) of logistic; tune on validation
-LOGISTIC_SCALE = 0.08     # scale (sigma); smaller -> steeper mapping
+LOGISTIC_CENTER = 0.85  # center (mu) of logistic; tune on validation
+LOGISTIC_SCALE = 0.08  # scale (sigma); smaller -> steeper mapping
 
 # Relevancy thresholds
-RELEVANCY_SCORE_THRESHOLD = 0.6  # relevancy_score >= this -> candidate considered relevant
+RELEVANCY_SCORE_THRESHOLD = (
+    0.6  # relevancy_score >= this -> candidate considered relevant
+)
 # Hybrid rule:
 # require_type_match: if True, require predicted type or keyword-detected type to match candidate type
 REQUIRE_TYPE_MATCH = True
@@ -53,7 +57,7 @@ TYPE_KEYWORDS = {
     "hplc": "HPLC Analyzer",
     "electrolyte": "Electrolyte Analyzer",
     "immunofluorescence": "Immunofluorescence Analyzer",
-    "elisa": "ELISA Reader & Washer"
+    "elisa": "ELISA Reader & Washer",
 }
 
 
@@ -61,11 +65,13 @@ TYPE_KEYWORDS = {
 def sigmoid(x):
     return 1.0 / (1.0 + math.exp(-x))
 
+
 def logistic_map(score, center=LOGISTIC_CENTER, scale=LOGISTIC_SCALE):
     # map raw score -> (-inf, +inf) then sigmoid to [0,1]
     # x -> (score - center) / scale
     z = (score - center) / scale
     return sigmoid(z)
+
 
 def token_overlap_score(q, c):
     q_tokens = set(re.split(r"\W+", q.lower()))
@@ -76,12 +82,14 @@ def token_overlap_score(q, c):
         return 0.0
     return len(q_tokens & c_tokens) / len(q_tokens)
 
+
 def detect_type_from_keywords(query):
     q = query.lower()
     for kw, t in TYPE_KEYWORDS.items():
         if kw in q:
             return t
     return None
+
 
 # ---------- Load resources ----------
 print("Loading embeddings / metadata / models...")
@@ -102,6 +110,7 @@ if HAS_FAISS and os.path.exists(FAISS_FILE):
 else:
     index = None
     use_faiss = False
+
 
 # ---------- Core prediction function ----------
 def predict_relevancy(query, top_k=5):
@@ -134,10 +143,13 @@ def predict_relevancy(query, top_k=5):
     type_pred = clf.predict(q_vec)[0]
     type_proba = clf.predict_proba(q_vec)[0]
     type_labels = list(clf.classes_)
-    type_conf = float(type_proba[type_labels.index(type_pred)]) if type_pred in type_labels else 0.0
+    type_conf = (
+        float(type_proba[type_labels.index(type_pred)])
+        if type_pred in type_labels
+        else 0.0
+    )
 
     keyword_type = detect_type_from_keywords(query)
-    
 
     # 4) strict-type filtering (if enabled)
     filtered_idxs = idxs
@@ -153,7 +165,9 @@ def predict_relevancy(query, top_k=5):
             filtered_idxs = [i for i in idxs if meta[i]["type"] == final_type]
             if not filtered_idxs:
                 # fallback to scanning entire catalog for that type
-                filtered_idxs = [i for i, m in enumerate(meta) if m["type"] == final_type]
+                filtered_idxs = [
+                    i for i, m in enumerate(meta) if m["type"] == final_type
+                ]
 
             # if still empty, fall back to original candidate list
             if not filtered_idxs:
@@ -164,35 +178,40 @@ def predict_relevancy(query, top_k=5):
     for i in filtered_idxs:
         item = meta[i]
         emb_score = float(emb[i] @ q_emb)
-        tok_score = token_overlap_score(query, item.get("title", "") + " " + item.get("specification", ""))
+        tok_score = token_overlap_score(
+            query, item.get("title", "") + " " + item.get("specification", "")
+        )
         cand_type = item.get("type", "")
         # candidate's type_conf: how much classifier supports this type
         cand_type_conf = 0.0
         if cand_type in type_labels:
             cand_type_conf = float(type_proba[type_labels.index(cand_type)])
-        # If keyword_type detected ⇒ strong confidence in type
+            # If keyword_type detected ⇒ strong confidence in type
             if keyword_type and keyword_type == cand_type:
-                boosted_type_conf = 1.0     # FULL CONFIDENCE
+                boosted_type_conf = 1.0  # FULL CONFIDENCE
             else:
                 boosted_type_conf = cand_type_conf
 
-            raw_score = (EMB_WEIGHT * emb_score
+            raw_score = (
+                EMB_WEIGHT * emb_score
                 + TYPE_WEIGHT * boosted_type_conf
-                + TOKEN_WEIGHT * tok_score)
+                + TOKEN_WEIGHT * tok_score
+            )
 
-
-        candidates.append({
-            "index": int(i),
-            "title": item.get("title"),
-            "product_code": item.get("product_code"),
-            "type": cand_type,
-            "segment": item.get("segment"),
-            "specification": item.get("specification"),
-            "emb_score": emb_score,
-            "type_conf": cand_type_conf,
-            "token_score": tok_score,
-            "raw_score": raw_score
-        })
+        candidates.append(
+            {
+                "index": int(i),
+                "title": item.get("title"),
+                "product_code": item.get("product_code"),
+                "type": cand_type,
+                "segment": item.get("segment"),
+                "specification": item.get("specification"),
+                "emb_score": emb_score,
+                "type_conf": cand_type_conf,
+                "token_score": tok_score,
+                "raw_score": raw_score,
+            }
+        )
 
     # sort by raw_score descending
     candidates.sort(key=lambda x: x["raw_score"], reverse=True)
@@ -208,7 +227,9 @@ def predict_relevancy(query, top_k=5):
         best = None
         best_raw = 0.0
 
-    relevancy_score = logistic_map(best_raw, center=LOGISTIC_CENTER, scale=LOGISTIC_SCALE)
+    relevancy_score = logistic_map(
+        best_raw, center=LOGISTIC_CENTER, scale=LOGISTIC_SCALE
+    )
 
     # 7) Hybrid rule for boolean 'relevant'
     # If REQUIRE_TYPE_MATCH is True, we require that:
@@ -222,7 +243,9 @@ def predict_relevancy(query, top_k=5):
             is_type_match = True
 
     if REQUIRE_TYPE_MATCH:
-        relevant = bool(is_type_match and (relevancy_score >= RELEVANCY_SCORE_THRESHOLD))
+        relevant = bool(
+            is_type_match and (relevancy_score >= RELEVANCY_SCORE_THRESHOLD)
+        )
     else:
         relevant = bool(relevancy_score >= RELEVANCY_SCORE_THRESHOLD)
 
@@ -230,19 +253,23 @@ def predict_relevancy(query, top_k=5):
     out_top_matches = []
     for c in top_candidates:
         # map raw score -> local relevancy estimate too
-        c_relevancy = logistic_map(c["raw_score"], center=LOGISTIC_CENTER, scale=LOGISTIC_SCALE)
-        out_top_matches.append({
-            "title": c["title"],
-            "product_code": c["product_code"],
-            "type": c["type"],
-            "segment": c["segment"],
-            "specification": c["specification"],
-            "emb_score": c["emb_score"],
-            "type_conf": c["type_conf"],
-            "token_score": c["token_score"],
-            "raw_score": c["raw_score"],
-            "relevancy_estimate": c_relevancy
-        })
+        c_relevancy = logistic_map(
+            c["raw_score"], center=LOGISTIC_CENTER, scale=LOGISTIC_SCALE
+        )
+        out_top_matches.append(
+            {
+                "title": c["title"],
+                "product_code": c["product_code"],
+                "type": c["type"],
+                "segment": c["segment"],
+                "specification": c["specification"],
+                "emb_score": c["emb_score"],
+                "type_conf": c["type_conf"],
+                "token_score": c["token_score"],
+                "raw_score": c["raw_score"],
+                "relevancy_estimate": c_relevancy,
+            }
+        )
 
     result = {
         "query": query,
@@ -252,14 +279,13 @@ def predict_relevancy(query, top_k=5):
         "relevancy_score": float(relevancy_score),
         "relevant": bool(relevant),
         "best_match": out_top_matches[0] if out_top_matches else None,
-        "top_matches": out_top_matches
+        "top_matches": out_top_matches,
     }
     return result
 
+
 # ---------- Quick local test ----------
 if __name__ == "__main__":
-    tests = [
-        "5 Part Automated Hematology Analyser (V2) (Q2)"
-    ]
+    tests = ["5 Part Automated Hematology Analyser (V2) (Q2)"]
     for t in tests:
         print(json.dumps(predict_relevancy(t, top_k=3), indent=2))

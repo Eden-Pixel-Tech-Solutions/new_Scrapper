@@ -1,119 +1,18 @@
-2025-12-24 23:25:35,892 [INFO] Loaded ML relevancy model and vectorizer.
-2025-12-24 23:25:37,087 [INFO] Loaded Diagnostic keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_diagnostic.csv
-2025-12-24 23:25:37,116 [INFO] Loaded Endo keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_endo.csv
-2025-12-24 23:25:37,340 [INFO] Loaded Overall keywords: D:\Tender System\TenderSystem - Copy\app\data\keywords_sheet1.csv
-2025-12-24 23:25:37,416 [INFO] Matcher initialized with loaded KeywordStore.
-2025-12-24 23:26:46,811 [INFO] Loading faiss with AVX2 support.
-2025-12-24 23:26:47,527 [INFO] Successfully loaded faiss with AVX2 support.
-2025-12-24 23:26:47,597 [INFO] Use pytorch device_name: cpu
-2025-12-24 23:26:47,597 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
-2025-12-24 23:26:51,711 [INFO] Use pytorch device_name: cpu
-2025-12-24 23:26:51,712 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
-2025-12-24 23:26:54,973 [INFO] Use pytorch device_name: cpu
-2025-12-24 23:26:54,973 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
-2025-12-24 23:26:58,288 [INFO] Loaded global_relevancy.predict successfully.
-2025-12-24 23:26:58,292 [INFO] Scraper starting...
-2025-12-24 23:26:58,293 [INFO] DB consumer starting...
-2025-12-24 23:27:18,340 [INFO] Applying sorting: Bid Start Date -> Latest
-2025-12-24 23:27:20,526 [INFO] Found 45039 records across 4504 pages.
-2025-12-24 23:27:24,888 [INFO] DB: committed approx 2 rows (gem + main).
-2025-12-24 23:27:30,086 [INFO] DB: committed approx 38 rows (gem + main).
-2025-12-24 23:27:35,732 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:27:41,437 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:27:46,761 [INFO] DB: committed approx 22 rows (gem + main).
-2025-12-24 23:27:51,788 [INFO] DB: committed approx 38 rows (gem + main).
-2025-12-24 23:27:57,633 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:28:03,163 [INFO] DB: committed approx 40 rows (gem + main).
-2025-12-24 23:28:09,107 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:28:14,963 [INFO] DB: committed approx 40 rows (gem + main).
-2025-12-24 23:28:20,665 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:28:26,342 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:28:31,385 [INFO] DB: committed approx 40 rows (gem + main).
-2025-12-24 23:28:36,483 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:28:42,369 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:28:48,198 [INFO] DB: committed approx 40 rows (gem + main).
-2025-12-24 23:28:53,245 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:28:59,217 [INFO] DB: committed approx 40 rows (gem + main).
-2025-12-24 23:29:04,869 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:29:10,177 [INFO] DB: committed approx 22 rows (gem + main).
-2025-12-24 23:29:16,323 [INFO] DB: committed approx 38 rows (gem + main).
-2025-12-24 23:29:22,182 [INFO] DB: committed approx 22 rows (gem + main).
-2025-12-24 23:29:28,090 [INFO] DB: committed approx 38 rows (gem + main).
-2025-12-24 23:29:33,397 [INFO] DB: committed approx 22 rows (gem + main).
-2025-12-24 23:29:38,773 [INFO] DB: committed approx 38 rows (gem + main).
-2025-12-24 23:29:44,327 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:29:49,401 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:29:54,840 [INFO] DB: committed approx 40 rows (gem + main).
-2025-12-24 23:30:00,090 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:30:05,147 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:30:10,913 [INFO] DB: committed approx 40 rows (gem + main).
-2025-12-24 23:30:16,681 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:30:22,197 [INFO] DB: committed approx 40 rows (gem + main).
-2025-12-24 23:30:27,937 [INFO] DB: committed approx 20 rows (gem + main).
-2025-12-24 23:30:28,038 [INFO] Received stop signal — shutting down...
-2025-12-24 23:30:29,053 [INFO] Shutdown requested via KeyboardInterrupt
-2025-12-24 23:30:29,219 [ERROR] Task exception was never retrieved
-future: <Task finished name='Task-1' coro=<main() done, defined at D:\Tender System\TenderSystem - Copy\run.py:613> exception=KeyboardInterrupt()>
-Traceback (most recent call last):
-  File "D:\Tender System\TenderSystem - Copy\run.py", line 635, in <module>
-    asyncio.run(main())
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\lib\asyncio\runners.py", line 47, in run
-    _cancel_all_tasks(loop)
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\lib\asyncio\runners.py", line 63, in _cancel_all_tasks
-    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\lib\asyncio\base_events.py", line 636, in run_until_complete
-    self.run_forever()
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\lib\asyncio\windows_events.py", line 321, in run_forever
-    super().run_forever()
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\lib\asyncio\base_events.py", line 603, in run_forever
-    self._run_once()
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\lib\asyncio\base_events.py", line 1909, in _run_once
-    handle._run()
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\lib\asyncio\events.py", line 80, in _run
-    self._context.run(self._callback, *self._args)
-  File "D:\Tender System\TenderSystem - Copy\run.py", line 623, in main
-    await asyncio.gather(scraper_task, consumer_task)
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\lib\asyncio\runners.py", line 44, in run
-    return loop.run_until_complete(main)
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\lib\asyncio\base_events.py", line 636, in run_until_complete
-    self.run_forever()
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\lib\asyncio\windows_events.py", line 321, in run_forever
-    super().run_forever()
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\lib\asyncio\base_events.py", line 603, in run_forever
-    self._run_once()
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\lib\asyncio\base_events.py", line 1909, in _run_once
-    handle._run()
-  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.3056.0_x64__qbz5n2kfra8p0\lib\asyncio\events.py", line 80, in _run
-    self._context.run(self._callback, *self._args)
-  File "D:\Tender System\TenderSystem - Copy\run.py", line 471, in scraper_worker
-    gem_rows, main_rows = await scrape_single_page_to_rows(page, page_no)
-  File "D:\Tender System\TenderSystem - Copy\run.py", line 356, in scrape_single_page_to_rows
-    g = global_predict(items, top_k=5)
-  File "D:\Tender System\TenderSystem - Copy\relevency\scripts\global_relevancy.py", line 1128, in predict
-    result = predict_single(single_query, top_k=top_k)
-  File "D:\Tender System\TenderSystem - Copy\relevency\scripts\global_relevancy.py", line 1028, in predict_single
-    q_emb = MODEL.encode([query], normalize_embeddings=True)[0]
-  File "D:\Tender System\TenderSystem - Copy\venv\lib\site-packages\torch\utils\_contextlib.py", line 120, in decorate_context
-    return func(*args, **kwargs)
-  File "D:\Tender System\TenderSystem - Copy\venv\lib\site-packages\sentence_transformers\SentenceTransformer.py", line 962, in encode
-    self.eval()
-  File "D:\Tender System\TenderSystem - Copy\venv\lib\site-packages\torch\nn\modules\module.py", line 2910, in eval
-    return self.train(False)
-  File "D:\Tender System\TenderSystem - Copy\venv\lib\site-packages\torch\nn\modules\module.py", line 2891, in train
-    module.train(mode)
-  File "D:\Tender System\TenderSystem - Copy\venv\lib\site-packages\torch\nn\modules\module.py", line 2891, in train
-    module.train(mode)
-  File "D:\Tender System\TenderSystem - Copy\venv\lib\site-packages\transformers\modeling_utils.py", line 5957, in train
-    out = super().train(mode)
-  File "D:\Tender System\TenderSystem - Copy\venv\lib\site-packages\torch\nn\modules\module.py", line 2891, in train
-    module.train(mode)
-  File "D:\Tender System\TenderSystem - Copy\venv\lib\site-packages\torch\nn\modules\module.py", line 2891, in train
-    module.train(mode)
-  File "D:\Tender System\TenderSystem - Copy\venv\lib\site-packages\torch\nn\modules\module.py", line 2891, in train
-    module.train(mode)
-  [Previous line repeated 2 more times]
-  File "D:\Tender System\TenderSystem - Copy\venv\lib\site-packages\torch\nn\modules\module.py", line 2889, in train
-    self.training = mode
-  File "D:\Tender System\TenderSystem - Copy\venv\lib\site-packages\torch\nn\modules\module.py", line 2071, in __setattr__
-    super().__setattr__(name, value)
-KeyboardInterrupt
+2025-12-24 18:38:01,219 [INFO] Loaded ML relevancy model and vectorizer.
+2025-12-24 18:38:01,307 [INFO] Loaded Diagnostic keywords: /home/ubuntu/scrapper_relevency_keyword/app/data/keywords_diagnostic.csv
+2025-12-24 18:38:01,318 [INFO] Loaded Endo keywords: /home/ubuntu/scrapper_relevency_keyword/app/data/keywords_endo.csv
+2025-12-24 18:38:01,539 [INFO] Loaded Overall keywords: /home/ubuntu/scrapper_relevency_keyword/app/data/keywords_sheet1.csv
+2025-12-24 18:38:01,611 [INFO] Matcher initialized with loaded KeywordStore.
+2025-12-24 18:38:12,432 [INFO] Loading faiss with AVX512 support.
+2025-12-24 18:38:12,511 [INFO] Successfully loaded faiss with AVX512 support.
+2025-12-24 18:38:12,536 [INFO] Use pytorch device_name: cpu
+2025-12-24 18:38:12,536 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-24 18:38:15,597 [INFO] Use pytorch device_name: cpu
+2025-12-24 18:38:15,597 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-24 18:38:18,396 [INFO] Use pytorch device_name: cpu
+2025-12-24 18:38:18,397 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-24 18:38:21,195 [INFO] Loaded global_relevancy.predict successfully.
+2025-12-24 18:38:21,197 [INFO] Scraper starting...
+2025-12-24 18:38:21,197 [INFO] DB consumer starting...
+2025-12-24 18:38:27,035 [INFO] Applying sorting: Bid Start Date -> Latest
+2025-12-24 18:38:29,235 [INFO] Found 45043 records across 4505 pages.
