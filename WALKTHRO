@@ -1,0 +1,37 @@
+Tender Data Extraction and Database Injection Workflow
+Based on the research, here is the breakdown of the files responsible for extracting tender data and pushing it to the gem_tenders table.
+
+Primary File: 
+run.py
+This is the main real-time scraper script. It performs the following:
+
+Scraping: Uses Playwright to navigate the GeM portal (https://bidplus.gem.gov.in/all-bids).
+Extraction: The function 
+scrape_single_page_to_rows
+ extracts fields like bid_number, items, quantity, department, start_date, and end_date.
+Enrichment: It calls ML models (
+predict_relevance
+) and keyword matchers to populate relevancy data.
+Injection: The function 
+db_execute_many_upsert
+ performs the actual INSERT INTO gem_tenders ... ON DUPLICATE KEY UPDATE operation.
+Secondary Processing: 
+reflect_item_category.py
+While 
+run.py
+ does the initial insertion, this file refinement the data:
+
+Source: It reads OCR JSON data produced by the PDF extraction pipeline.
+Action: It extracts a more accurate Item Category from the tender PDF documents.
+Update: It updates the items field in the gem_tenders table with the extracted category name.
+Dependency: 
+tender_pipeline_workers.py
+This file bridges the gap between the initial record in gem_tenders and the detailed document extraction:
+
+It fetches pending tenders from gem_tenders.
+It downloads the tender PDFs and runs the extractor CLI (
+url_pdf_extraction.py
+).
+It saves document metadata to gem_tender_docs, which then triggers the 
+reflect_item_category.py
+ process mentioned above.

@@ -182,8 +182,8 @@ UPSERT_SQL = """
 INSERT INTO gem_tenders
   (page_no, bid_number, detail_url, items, quantity, department, start_date, end_date,
    relevance, relevance_score, match_count, match_relevency, matches, matches_status,
-   relevency_result, main_relevency_score, dept)
-VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+   relevency_result, main_relevency_score, dept, ra_no, ra_url)
+VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
 ON DUPLICATE KEY UPDATE
   page_no = VALUES(page_no),
   detail_url = VALUES(detail_url),
@@ -199,7 +199,9 @@ ON DUPLICATE KEY UPDATE
   matches_status = VALUES(matches_status),
   relevency_result = VALUES(relevency_result),
   main_relevency_score = VALUES(main_relevency_score),
-  dept = VALUES(dept)
+  dept = VALUES(dept),
+  ra_no = VALUES(ra_no),
+  ra_url = VALUES(ra_url)
 ;
 """
 
@@ -428,6 +430,31 @@ async def scrape_single_page_to_rows(page, page_no: int):
                 best_match_json = safe_json_dumps({})
                 top_matches_json = safe_json_dumps([])
 
+            # ---- RA NO & URL EXTRACTION ----
+            ra_no = ""
+            ra_url = ""
+            try:
+                # User pattern:
+                # <p class="bid_no pull-left"> <span class="bid_title">RA NO:&nbsp;</span> <a ...> ... </a> </p>
+                # We look for the p.bid_no that has span.bid_title with text "RA NO:"
+                
+                # Check directly in the card content
+                ra_p = await c.query_selector("p.bid_no:has(span.bid_title:text('RA NO:'))")
+                if ra_p:
+                    ra_link = await ra_p.query_selector("a")
+                    if ra_link:
+                        ra_no = (await ra_link.inner_text()).strip()
+                        href = await ra_link.get_attribute("href")
+                        if href:
+                            if href.startswith("/"):
+                                ra_url = BASE_URL + href
+                            else:
+                                ra_url = href
+            except Exception:
+                logger.exception("Error extracting RA NO/URL")
+
+
+
             # Build gem_tenders tuple (must match UPSERT_SQL order)
             gem_row = (
                 page_no,
@@ -447,6 +474,8 @@ async def scrape_single_page_to_rows(page, page_no: int):
                 global_relevant,  # relevency_result
                 global_score,  # main_relevency_score
                 global_dept,  # dept
+                ra_no,
+                ra_url,
             )
             gem_rows.append(gem_row)
 
@@ -649,6 +678,8 @@ async def db_consumer(queue: asyncio.Queue, executor: ThreadPoolExecutor):
                             "relevency_result": r[14],
                             "main_relevency_score": r[15],
                             "dept": r[16],
+                            "ra_no": r[17] if len(r) > 17 else "",
+                            "ra_url": r[18] if len(r) > 18 else "",
                         }
                         for r in csv_rows_for_snapshot
                     ]

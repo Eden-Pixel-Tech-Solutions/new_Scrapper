@@ -1,0 +1,465 @@
+2025-12-29 18:06:28,010 [INFO] Loaded ML relevancy model and vectorizer.
+2025-12-29 18:06:34,690 [INFO] Loaded Diagnostic keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_diagnostic.csv
+2025-12-29 18:06:34,779 [INFO] Loaded Endo keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_endo.csv
+2025-12-29 18:06:37,851 [INFO] Loaded Overall keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_sheet1.csv
+2025-12-29 18:06:41,770 [INFO] Matcher initialized with loaded KeywordStore.
+2025-12-29 18:07:34,261 [INFO] Use pytorch device_name: cpu
+2025-12-29 18:07:34,262 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-29 18:07:38,855 [WARNING] Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-12-29 18:24:24,950 [INFO] Loaded ML relevancy model and vectorizer.
+2025-12-29 18:24:25,422 [INFO] Loaded Diagnostic keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_diagnostic.csv
+2025-12-29 18:24:25,430 [INFO] Loaded Endo keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_endo.csv
+2025-12-29 18:24:25,750 [INFO] Loaded Overall keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_sheet1.csv
+2025-12-29 18:24:25,874 [INFO] Matcher initialized with loaded KeywordStore.
+2025-12-29 18:25:17,075 [INFO] Use pytorch device_name: cpu
+2025-12-29 18:25:17,076 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-29 18:25:23,369 [WARNING] Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-12-29 18:26:57,650 [INFO] Use pytorch device_name: cpu
+2025-12-29 18:26:57,651 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-29 18:27:03,006 [WARNING] Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-12-29 18:30:33,028 [INFO] Use pytorch device_name: cpu
+2025-12-29 18:30:33,029 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-29 18:30:38,827 [INFO] Loaded global_relevancy.predict successfully.
+2025-12-29 18:30:38,840 [INFO] Scraper starting...
+2025-12-29 18:30:38,841 [INFO] DB consumer starting...
+2025-12-29 18:31:02,450 [INFO] Applying sorting: Bid Start Date -> Latest
+2025-12-29 18:31:04,796 [INFO] Found 39145 records across 3915 pages.
+2025-12-29 18:31:09,479 [INFO] package: mysql.connector.plugins
+2025-12-29 18:31:09,509 [INFO] plugin_name: caching_sha2_password
+2025-12-29 18:31:09,536 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-12-29 18:31:09,549 [INFO] package: mysql.connector.plugins
+2025-12-29 18:31:09,549 [INFO] plugin_name: mysql_native_password
+2025-12-29 18:31:09,553 [INFO] package: mysql.connector.plugins
+2025-12-29 18:31:09,554 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-12-29 18:31:09,554 [INFO] plugin_name: mysql_native_password
+2025-12-29 18:31:09,555 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-12-29 18:31:09,563 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-29 18:31:09,584 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-29 18:31:09,588 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-29 18:31:14,091 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 18:31:14,104 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 18:31:14,106 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 18:31:18,431 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 18:31:18,446 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 18:31:18,448 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 18:31:23,563 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 18:31:23,577 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 18:31:23,580 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 18:31:28,172 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 18:31:28,184 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 18:31:28,186 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 18:31:33,084 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 18:31:33,107 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 18:31:33,110 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 18:31:37,783 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 18:31:37,804 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 18:31:37,807 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 18:31:42,424 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 18:31:42,432 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 18:31:42,434 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 18:31:47,467 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 18:31:47,475 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 18:31:47,485 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 18:31:52,574 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 18:31:52,582 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 18:31:52,584 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 18:31:58,164 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-29 18:31:58,172 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-29 18:31:58,329 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-29 18:31:59,007 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 18:31:59,024 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 18:31:59,073 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 18:32:04,688 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-29 18:32:04,691 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-29 18:32:04,700 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-29 18:32:10,474 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 18:32:10,483 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 18:32:10,487 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 18:32:15,239 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 18:32:15,246 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 18:32:15,250 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 18:32:17,248 [ERROR] Error scraping a card — skipping it.
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 359, in scrape_single_page_to_rows
+    department = (await dept_el.inner_text()).strip() if dept_el else ""
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\async_api\_generated.py", line 1853, in inner_text
+    return mapping.from_maybe_impl(await self._impl_obj.inner_text())
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_element_handle.py", line 82, in inner_text
+    return await self._channel.send("innerText", None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: ElementHandle.inner_text: Target page, context or browser has been closed
+Call log:
+  - waiting for locator(":scope")
+
+2025-12-29 18:32:17,258 [ERROR] Error scraping a card — skipping it.
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 339, in scrape_single_page_to_rows
+    bid_link = await c.query_selector(".block_header a.bid_no_hover")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\async_api\_generated.py", line 2877, in query_selector
+    await self._impl_obj.query_selector(selector=selector)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_element_handle.py", line 353, in query_selector
+    await self._channel.send("querySelector", None, dict(selector=selector))
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: ElementHandle.query_selector: Target page, context or browser has been closed
+2025-12-29 18:32:17,266 [ERROR] Error scraping a card — skipping it.
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 339, in scrape_single_page_to_rows
+    bid_link = await c.query_selector(".block_header a.bid_no_hover")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\async_api\_generated.py", line 2877, in query_selector
+    await self._impl_obj.query_selector(selector=selector)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_element_handle.py", line 353, in query_selector
+    await self._channel.send("querySelector", None, dict(selector=selector))
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: ElementHandle.query_selector: Target page, context or browser has been closed
+2025-12-29 18:32:17,278 [ERROR] Error scraping a card — skipping it.
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 339, in scrape_single_page_to_rows
+    bid_link = await c.query_selector(".block_header a.bid_no_hover")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\async_api\_generated.py", line 2877, in query_selector
+    await self._impl_obj.query_selector(selector=selector)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_element_handle.py", line 353, in query_selector
+    await self._channel.send("querySelector", None, dict(selector=selector))
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: ElementHandle.query_selector: Target page, context or browser has been closed
+2025-12-29 18:32:17,287 [ERROR] Error scraping a card — skipping it.
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 339, in scrape_single_page_to_rows
+    bid_link = await c.query_selector(".block_header a.bid_no_hover")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\async_api\_generated.py", line 2877, in query_selector
+    await self._impl_obj.query_selector(selector=selector)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_element_handle.py", line 353, in query_selector
+    await self._channel.send("querySelector", None, dict(selector=selector))
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: ElementHandle.query_selector: Target page, context or browser has been closed
+2025-12-29 18:32:17,295 [ERROR] Error scraping a card — skipping it.
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 339, in scrape_single_page_to_rows
+    bid_link = await c.query_selector(".block_header a.bid_no_hover")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\async_api\_generated.py", line 2877, in query_selector
+    await self._impl_obj.query_selector(selector=selector)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_element_handle.py", line 353, in query_selector
+    await self._channel.send("querySelector", None, dict(selector=selector))
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: ElementHandle.query_selector: Target page, context or browser has been closed
+2025-12-29 18:32:17,303 [ERROR] Error scraping a card — skipping it.
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 339, in scrape_single_page_to_rows
+    bid_link = await c.query_selector(".block_header a.bid_no_hover")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\async_api\_generated.py", line 2877, in query_selector
+    await self._impl_obj.query_selector(selector=selector)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_element_handle.py", line 353, in query_selector
+    await self._channel.send("querySelector", None, dict(selector=selector))
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: ElementHandle.query_selector: Target page, context or browser has been closed
+2025-12-29 18:32:17,312 [ERROR] Error scraping a card — skipping it.
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 339, in scrape_single_page_to_rows
+    bid_link = await c.query_selector(".block_header a.bid_no_hover")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\async_api\_generated.py", line 2877, in query_selector
+    await self._impl_obj.query_selector(selector=selector)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_element_handle.py", line 353, in query_selector
+    await self._channel.send("querySelector", None, dict(selector=selector))
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: ElementHandle.query_selector: Target page, context or browser has been closed
+2025-12-29 18:32:17,320 [ERROR] Error scraping a card — skipping it.
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 339, in scrape_single_page_to_rows
+    bid_link = await c.query_selector(".block_header a.bid_no_hover")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\async_api\_generated.py", line 2877, in query_selector
+    await self._impl_obj.query_selector(selector=selector)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_element_handle.py", line 353, in query_selector
+    await self._channel.send("querySelector", None, dict(selector=selector))
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: ElementHandle.query_selector: Target page, context or browser has been closed
+2025-12-29 18:32:17,326 [ERROR] Error scraping a card — skipping it.
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 339, in scrape_single_page_to_rows
+    bid_link = await c.query_selector(".block_header a.bid_no_hover")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\async_api\_generated.py", line 2877, in query_selector
+    await self._impl_obj.query_selector(selector=selector)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_element_handle.py", line 353, in query_selector
+    await self._channel.send("querySelector", None, dict(selector=selector))
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: ElementHandle.query_selector: Target page, context or browser has been closed
+2025-12-29 18:32:17,333 [ERROR] Scraper error — retrying in 10s.
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 516, in scraper_worker
+    next_btn = await page.query_selector("#light-pagination a.next")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\async_api\_generated.py", line 8087, in query_selector
+    await self._impl_obj.query_selector(selector=selector, strict=strict)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_page.py", line 410, in query_selector
+    return await self._main_frame.query_selector(selector, strict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_frame.py", line 348, in query_selector
+    await self._channel.send("querySelector", None, locals_to_params(locals()))
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.query_selector: Target page, context or browser has been closed
+2025-12-29 18:32:47,735 [INFO] Loaded ML relevancy model and vectorizer.
+2025-12-29 18:32:47,837 [INFO] Loaded Diagnostic keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_diagnostic.csv
+2025-12-29 18:32:47,847 [INFO] Loaded Endo keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_endo.csv
+2025-12-29 18:32:48,063 [INFO] Loaded Overall keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_sheet1.csv
+2025-12-29 18:32:48,171 [INFO] Matcher initialized with loaded KeywordStore.
+2025-12-29 18:32:56,991 [INFO] Use pytorch device_name: cpu
+2025-12-29 18:32:56,991 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-29 18:33:03,056 [INFO] Use pytorch device_name: cpu
+2025-12-29 18:33:03,059 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-29 18:33:08,832 [INFO] Use pytorch device_name: cpu
+2025-12-29 18:33:08,833 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-29 18:33:13,924 [INFO] Loaded global_relevancy.predict successfully.
+2025-12-29 18:33:13,927 [INFO] Scraper starting...
+2025-12-29 18:33:13,928 [INFO] DB consumer starting...
+2025-12-29 18:33:26,696 [INFO] Applying sorting: Bid Start Date -> Latest
+2025-12-29 18:33:29,046 [INFO] Found 39145 records across 3915 pages.
+2025-12-29 18:33:36,533 [INFO] package: mysql.connector.plugins
+2025-12-29 18:33:36,563 [INFO] package: mysql.connector.plugins
+2025-12-29 18:33:36,582 [INFO] plugin_name: caching_sha2_password
+2025-12-29 18:33:36,669 [INFO] plugin_name: caching_sha2_password
+2025-12-29 18:33:36,671 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-12-29 18:33:36,673 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-12-29 18:33:36,681 [INFO] package: mysql.connector.plugins
+2025-12-29 18:33:36,688 [INFO] plugin_name: mysql_native_password
+2025-12-29 18:33:36,688 [INFO] package: mysql.connector.plugins
+2025-12-29 18:33:36,690 [INFO] plugin_name: mysql_native_password
+2025-12-29 18:33:36,693 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-12-29 18:33:36,692 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-12-29 18:33:36,700 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-29 18:33:36,713 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-29 18:33:36,717 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-29 18:33:42,418 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 18:33:42,425 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 18:33:42,431 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 18:33:47,959 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 18:33:47,984 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 18:33:47,988 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 20:09:37,307 [INFO] Loaded ML relevancy model and vectorizer.
+2025-12-29 20:09:37,395 [INFO] Loaded Diagnostic keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_diagnostic.csv
+2025-12-29 20:09:37,403 [INFO] Loaded Endo keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_endo.csv
+2025-12-29 20:09:37,672 [INFO] Loaded Overall keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_sheet1.csv
+2025-12-29 20:09:37,791 [INFO] Matcher initialized with loaded KeywordStore.
+2025-12-29 20:09:52,875 [INFO] Use pytorch device_name: cpu
+2025-12-29 20:09:52,876 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-29 20:10:00,039 [INFO] Use pytorch device_name: cpu
+2025-12-29 20:10:00,039 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-29 20:10:05,636 [INFO] Use pytorch device_name: cpu
+2025-12-29 20:10:05,640 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-29 20:10:11,631 [INFO] Loaded global_relevancy.predict successfully.
+2025-12-29 20:10:11,639 [INFO] Scraper starting...
+2025-12-29 20:10:11,640 [INFO] DB consumer starting...
+2025-12-29 20:10:21,415 [INFO] Applying sorting: Bid Start Date -> Latest
+2025-12-29 20:10:24,342 [INFO] Found 38732 records across 3874 pages.
+2025-12-29 20:10:37,401 [INFO] package: mysql.connector.plugins
+2025-12-29 20:10:37,402 [INFO] package: mysql.connector.plugins
+2025-12-29 20:10:37,402 [INFO] plugin_name: caching_sha2_password
+2025-12-29 20:10:37,403 [INFO] plugin_name: caching_sha2_password
+2025-12-29 20:10:37,404 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-12-29 20:10:37,404 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-12-29 20:10:37,410 [INFO] package: mysql.connector.plugins
+2025-12-29 20:10:37,411 [INFO] plugin_name: mysql_native_password
+2025-12-29 20:10:37,414 [INFO] package: mysql.connector.plugins
+2025-12-29 20:10:37,415 [INFO] plugin_name: mysql_native_password
+2025-12-29 20:10:37,417 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-12-29 20:10:37,418 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-12-29 20:10:37,425 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-29 20:10:37,441 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-29 20:10:37,446 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-29 20:10:44,398 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-29 20:10:44,418 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-29 20:10:46,143 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-29 20:10:50,808 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 20:10:50,822 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 20:10:50,903 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 20:10:58,880 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-29 20:10:58,884 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-29 20:10:58,886 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-29 20:11:04,328 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-29 20:11:04,342 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-29 20:11:04,348 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-29 20:11:07,836 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 20:11:07,845 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 20:11:07,854 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 20:11:16,311 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-29 20:11:16,316 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-29 20:11:16,319 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-29 20:11:22,422 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-29 20:11:22,434 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-29 20:11:22,439 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-29 20:11:23,613 [INFO] Attempting to insert 10 rows into Main_Relevency...
+2025-12-29 20:11:23,622 [INFO] Successfully inserted 10 rows into Main_Relevency.
+2025-12-29 20:11:23,627 [INFO] DB: committed approx 20 rows (gem + main).
+2025-12-29 20:11:32,912 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-29 20:11:32,917 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-29 20:11:32,920 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-29 20:11:38,879 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-29 20:11:38,888 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-29 20:11:39,058 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-29 20:11:44,888 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-29 20:11:44,893 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-29 20:11:44,896 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-29 20:11:50,443 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-29 20:11:50,455 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-29 20:11:50,460 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-29 20:11:51,067 [ERROR] Error scraping a card — skipping it.
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 366, in scrape_single_page_to_rows
+    end_el = await c.query_selector("span.end_date")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\async_api\_generated.py", line 2877, in query_selector
+    await self._impl_obj.query_selector(selector=selector)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_element_handle.py", line 353, in query_selector
+    await self._channel.send("querySelector", None, dict(selector=selector))
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: ElementHandle.query_selector: Target page, context or browser has been closed
+2025-12-29 20:11:51,078 [ERROR] Error scraping a card — skipping it.
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 341, in scrape_single_page_to_rows
+    bid_link = await c.query_selector(".block_header a.bid_no_hover")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\async_api\_generated.py", line 2877, in query_selector
+    await self._impl_obj.query_selector(selector=selector)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_element_handle.py", line 353, in query_selector
+    await self._channel.send("querySelector", None, dict(selector=selector))
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: ElementHandle.query_selector: Target page, context or browser has been closed
+2025-12-29 20:11:51,088 [ERROR] Error scraping a card — skipping it.
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 341, in scrape_single_page_to_rows
+    bid_link = await c.query_selector(".block_header a.bid_no_hover")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\async_api\_generated.py", line 2877, in query_selector
+    await self._impl_obj.query_selector(selector=selector)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_element_handle.py", line 353, in query_selector
+    await self._channel.send("querySelector", None, dict(selector=selector))
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: ElementHandle.query_selector: Target page, context or browser has been closed
+2025-12-29 20:11:51,100 [ERROR] Scraper error — retrying in 10s.
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 545, in scraper_worker
+    next_btn = await page.query_selector("#light-pagination a.next")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\async_api\_generated.py", line 8087, in query_selector
+    await self._impl_obj.query_selector(selector=selector, strict=strict)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_page.py", line 410, in query_selector
+    return await self._main_frame.query_selector(selector, strict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_frame.py", line 348, in query_selector
+    await self._channel.send("querySelector", None, locals_to_params(locals()))
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Page.query_selector: Target page, context or browser has been closed
