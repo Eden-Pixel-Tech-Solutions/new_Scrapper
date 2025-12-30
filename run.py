@@ -40,6 +40,7 @@ from typing import List, Tuple, Dict, Any, Optional
 import mysql.connector
 import pandas as pd
 from playwright.async_api import async_playwright
+from tasks import process_tender, calculate_relevancy
 
 # ---------------------------
 # CONFIG (tweak as necessary)
@@ -518,58 +519,71 @@ async def scrape_single_page_to_rows(page, page_no: int):
 
             # ---- KEYWORD MATCHER ----
             try:
-                match_result = MATCHER.analyze(items, category_filter="all")
+                # Optimized Matcher uses .analyze() and returns a dict
+                # Returns: { "relevant": bool, "score_pct": int, "matches": list, "matched_count": int, ... }
+                matcher_res = MATCHER.analyze(items)
+                
+                match_count = matcher_res.get("matched_count", 0)
+                matches_list = matcher_res.get("matches", [])
+                # Logic for status/text
+                if matcher_res.get("relevant"):
+                    match_relevency = "High"
+                    matches_status = "Relevant"
+                elif match_count > 0:
+                    match_relevency = "Medium"
+                    matches_status = "Partial"
+                else:
+                    match_relevency = "Low"
+                    matches_status = "None"
+                    
             except Exception:
-                logger.exception(
-                    "Matcher analyze failed for items; falling back to no-matches."
-                )
-                match_result = {}
+                logger.exception("Matcher analyze failed; falling back to 0 matches.")
+                match_count = 0
+                matches_list = []
+                match_relevency = "Low"
+                matches_status = "Error"
 
-            match_count = match_result.get(
-                "matched_count", len(match_result.get("matches", []))
-            )
-            match_relevency = match_result.get("score_pct", 0)  # 0-100
-            matches_list = match_result.get("matches", [])
             try:
                 matches_json = safe_json_dumps(matches_list)
             except Exception:
-                matches_json = safe_json_dumps(
-                    [
-                        {"phrase": m.get("phrase")}
-                        for m in matches_list
-                        if isinstance(m, dict)
-                    ]
-                )
-
-            matches_status = "Yes" if match_count > 0 else "No"
+                matches_json = "[]"
 
             # ---- GLOBAL RELEVANCY (embedding + special models) ----
             try:
-                g = global_predict(items, top_k=5)
-
-                # NEW OUTPUT FORMAT SUPPORT (results[])
-                query_result = {}
-                if isinstance(g, dict):
-                    results = g.get("results", [])
-                    if isinstance(results, list) and results:
-                        query_result = results[0]
-
-                global_score = float(query_result.get("relevancy_score", 0.0) or 0.0)
-                global_dept = query_result.get("detected_category") or ""
-
-                # relevancy flag derived from score
-                global_relevant = 1 if global_score > 0 else 0
-
-                best_match_json = safe_json_dumps(query_result.get("best_match", {}))
-                top_matches_json = safe_json_dumps(query_result.get("top_matches", []))
+                # global_predict(text) -> Returns dict with 'results' list (supports multi-query)
+                # We assume 'items' is treated as a single query or auto-split.
+                g_res = global_predict(items)
+                
+                # Check results
+                if g_res.get("results"):
+                    # Take the first result (primary)
+                    first_res = g_res["results"][0]
+                    global_score = first_res.get("relevancy_score", 0.0)
+                    global_relevant = 1 if first_res.get("relevant") else 0
+                    global_dept = first_res.get("detected_category") or ""
+                    
+                    best_match_data = first_res.get("best_match", {})
+                    best_match_json = safe_json_dumps(best_match_data)
+                    
+                    top_matches_data = first_res.get("top_matches", [])
+                    top_matches_json = safe_json_dumps(top_matches_data)
+                else:
+                    global_score = 0.0
+                    global_relevant = 0
+                    global_dept = ""
+                    best_match_json = "{}"
+                    top_matches_json = "[]"
+                    
             except Exception:
                 logger.exception("global_predict failed; setting defaults.")
-                g = {}
                 global_score = 0.0
                 global_relevant = 0
                 global_dept = ""
-                best_match_json = safe_json_dumps({})
-                top_matches_json = safe_json_dumps([])
+                best_match_json = "{}"
+                top_matches_json = "[]"
+
+            # Variable used later:
+            relevency_result = global_relevant
 
             # ---- RA NO & URL EXTRACTION ----
             ra_no = ""
@@ -872,6 +886,29 @@ async def db_consumer(queue: asyncio.Queue, executor: ThreadPoolExecutor):
                     else:
                         committed += int(r)
                 logger.info(f"DB: committed approx {committed} rows (gem + main).")
+                
+                # --- FIRE AND FORGET REDIS TASKS ---
+                # Now that DB commit is successful, queue the workers
+                if gem_to_commit:
+                    count_queued = 0
+                    for row in gem_to_commit:
+                        # row: (page_no, bid_number, detail_url, ...)
+                        # bid_number is row[1], detail_url is row[2]
+                        try:
+                            # We send a dict as expected by process_tender task
+                            payload = {
+                                "bid_number": row[1], 
+                                "detail_url": row[2]
+                            }
+                            process_tender.delay(payload)
+                            
+                            # Relevancy is now calculated locally in the loop above.
+                            
+                            count_queued += 1
+                        except Exception as e:
+                            logger.error(f"Failed to queue Redis task for {row[1]}: {e}")
+                    logger.info(f"Queued {count_queued} tasks to Redis/Docker.")
+                # -----------------------------------
         except Exception:
             logger.exception("Exception while flushing buffers.")
         finally:

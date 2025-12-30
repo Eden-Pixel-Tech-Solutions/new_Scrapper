@@ -28,6 +28,34 @@ CREATE TABLE IF NOT EXISTS Main_Relevency (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 """
 
+CREATE_GEM_TENDERS_SQL = """
+CREATE TABLE IF NOT EXISTS gem_tenders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    page_no INT,
+    bid_number VARCHAR(100) UNIQUE,
+    detail_url TEXT,
+    items TEXT,
+    quantity VARCHAR(255),
+    department TEXT,
+    start_date VARCHAR(100),
+    end_date VARCHAR(100),
+    relevance INT,
+    relevance_score FLOAT,
+    match_count INT,
+    match_relevency VARCHAR(50),
+    matches JSON,
+    matches_status VARCHAR(50),
+    relevency_result INT,
+    main_relevency_score FLOAT,
+    dept VARCHAR(255),
+    ra_no VARCHAR(255),
+    ra_url TEXT,
+    Representation_json JSON,
+    Corrigendum_json JSON,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+"""
+
 
 def create_table():
     print("--- Database Setup Tool ---")
@@ -38,9 +66,13 @@ def create_table():
         conn = mysql.connector.connect(**DB_CONFIG)
         cursor = conn.cursor()
 
-        print("\nExecuting CREATE TABLE statement...")
+        print("\nExecuting CREATE TABLE statement for Main_Relevency...")
         cursor.execute(CREATE_TABLE_SQL)
         print("✅ Table 'Main_Relevency' created successfully (or already exists).")
+
+        print("\nExecuting CREATE TABLE statement for gem_tenders...")
+        cursor.execute(CREATE_GEM_TENDERS_SQL)
+        print("✅ Table 'gem_tenders' created successfully (or already exists).")
 
         cursor.close()
         conn.close()

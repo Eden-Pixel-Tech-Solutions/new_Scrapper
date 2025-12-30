@@ -1,0 +1,11 @@
+
+# Ignore huge folders
+OUTPUT/
+TEMP_WORKERS/
+venv/
+__pycache__/
+.git/
+.vscode/
+node_modules/
+PDF/
+*.log
