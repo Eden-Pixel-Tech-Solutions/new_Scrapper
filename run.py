@@ -328,18 +328,37 @@ def safe_json_dumps(obj: Any) -> str:
             return '""'
 
 
-async def extract_modal_data(page, trigger_element):
+async def extract_modal_data(page, trigger_element=None, js_trigger=None):
     """
-    Clicks trigger, waits for modal, extracts title/tables, closes modal.
-    Returns JSON string or None.
+    Triggers modal via element click OR JS code, waits for modal, extracts data.
     """
     try:
-        # Click the link
-        await trigger_element.click()
-        
-        # Wait for modal visible (GeM uses .modal)
-        # We assume one modal at a time.
-        modal = await page.wait_for_selector("div.modal:visible", state="visible", timeout=4000)
+        # Trigger phase
+        if js_trigger:
+            logger.info(f"Triggering modal via JS: {js_trigger}")
+            await page.evaluate(js_trigger)
+        elif trigger_element:
+            # Click phase
+            # 1. Try standard force click
+            try:
+                await trigger_element.click(force=True, timeout=2000)
+            except:
+                pass
+            # 2. Try JS click
+            await page.evaluate("el => el.click()", trigger_element)
+            
+        # Wait for modal - 15s timeout
+        try:
+            modal = await page.wait_for_selector("div.modal:visible", state="visible", timeout=6000)
+        except:
+            if trigger_element and not js_trigger:
+                # Retry click if modal not found yet
+                logger.info("Modal not appearing, retrying click...")
+                await page.evaluate("el => el.click()", trigger_element)
+                modal = await page.wait_for_selector("div.modal:visible", state="visible", timeout=10000)
+            else:
+                return None
+            
         if not modal:
             return None
             
@@ -355,34 +374,61 @@ async def extract_modal_data(page, trigger_element):
             
         content_data = []
         
-        # Tables
-        tables = await modal.query_selector_all("table")
-        for tbl in tables:
-            rows = await tbl.query_selector_all("tr")
-            # attempt to detect headers if first row is th
-            # For simplicity, we just dump rows.
-            # But let's try to match user requested format if 2 or 3 columns
-            for r in rows:
-                cols = await r.query_selector_all("td, th")
-                txts = [(await c.inner_text()).strip() for c in cols]
-                
-                if not txts:
-                    continue
+        # Custom extraction for Corrigendum based on provided HTML structure:
+        # <div class="well"><div class="col-block">...</div>...</div>
+        if "Corrigendum" in title or "View(s)" in title: # Title is "Corrigendum" or "View(s)"
+            wells = await modal.query_selector_all("div.well")
+            if wells:
+                for w in wells:
+                    # Each well is a block of changes
+                    # Extract text from all col-blocks
+                    cols = await w.query_selector_all("div.col-block")
+                    well_data = {}
+                    full_text = []
+                    for c in cols:
+                        # Parsing logic:
+                        # <div class="col-block"> <span id="..."><strong>Modified On: </strong><span>DATE</span></span></div>
+                        # <div class="col-block">Bid extended to <strong>DATE</strong></div>
+                        
+                        txt = (await c.inner_text()).strip()
+                        txt = re.sub(r'\s+', ' ', txt) # normalize spaces
+                        if txt:
+                            full_text.append(txt)
+                            
+                    if full_text:
+                        # Join them for a stored entry
+                        content_data.append({"change": " | ".join(full_text)})
+        
+        # Fallback if no wells found (or standard table extraction)
+        if not content_data:
+            # Tables
+            tables = await modal.query_selector_all("table")
+            for tbl in tables:
+                rows = await tbl.query_selector_all("tr")
+                # attempt to detect headers if first row is th
+                # For simplicity, we just dump rows.
+                # But let's try to match user requested format if 2 or 3 columns
+                for r in rows:
+                    cols = await r.query_selector_all("td, th")
+                    txts = [(await c.inner_text()).strip() for c in cols]
                     
-                if len(txts) == 2:
-                    content_data.append({"label": txts[0], "value": txts[1]})
-                elif len(txts) == 3:
-                     # Corrigendum style?
-                    content_data.append({"field": txts[0], "old": txts[1], "new": txts[2]})
-                else:
-                    content_data.append({"row": txts})
+                    if not txts:
+                        continue
+                        
+                    if len(txts) == 2:
+                        content_data.append({"label": txts[0], "value": txts[1]})
+                    elif len(txts) == 3:
+                         # Corrigendum style?
+                        content_data.append({"field": txts[0], "old": txts[1], "new": txts[2]})
+                    else:
+                        content_data.append({"row": txts})
         
         # If no table rows found, maybe just paragraphs?
         if not content_data:
             ps = await modal.query_selector_all("p")
             for p in ps:
                 t = (await p.inner_text()).strip()
-                if t:
+                if t and "Corrigendum Details" not in t: # Skip header p
                     content_data.append({"text": t})
 
         result = {
@@ -548,35 +594,107 @@ async def scrape_single_page_to_rows(page, page_no: int):
             except Exception:
                 logger.exception("Error extracting RA NO/URL")
 
-            # ---- View Representation / Corrigendum ----
+            # ---- Representation / Corrigendum ----
+            # User Step 1: Click "View Corrigendum/Representation" toggle if present (e.g. Back button or Expand)
+            try:
+                # Matches <a>...View Corrigendum/Representation</a>
+                toggle_btn = await c.query_selector("a:has-text('View Corrigendum/Representation')")
+                if toggle_btn:
+                    # logger.info("Found 'View Corrigendum/Representation' link. Clicking it...")
+                    await toggle_btn.click()
+                    await asyncio.sleep(2) # Wait for UI to update
+            except Exception as e:
+                # logger.warning(f"Error clicking toggle: {e}")
+                pass
+
             rep_json = None
             corr_json = None
             try:
                 # Representation
-                # Pattern: <a>View Representation</a>
-                rep_link = await c.query_selector("a:text-is('View Representation')")
-                if rep_link:
-                     rep_json = await extract_modal_data(page, rep_link)
-                     if rep_json:
-                         try:
-                             safe_bid = re.sub(r'[^A-Za-z0-9_-]', '_', bid_no)
-                             fname = os.path.join(REP_DIR, f"{safe_bid}.json")
-                             with open(fname, "w", encoding="utf-8") as f:
-                                 f.write(rep_json)
-                         except Exception:
-                             logger.exception(f"Failed to save Representation JSON for {bid_no}")
+                # Pattern: <a>View Representation</a> often inside <span onclick="...">
+                rep_js_trigger = None
+                rep_element = None
+                try:
+                    # Find elements with text "View Representation"
+                    # We check 'a' and 'span'
+                    candidates = await c.query_selector_all("a, span")
+                    for cand in candidates:
+                        txt = (await cand.inner_text()) or ""
+                        if "View Representation" in txt:
+                            # Check if this element has onclick
+                            oc = await cand.get_attribute("onclick")
+                            if oc:
+                                rep_js_trigger = oc
+                                logger.info(f"Found Representation JS trigger on element: {oc}")
+                                break
+                            
+                            # Check parent
+                            parent_handles = await cand.xpath("..")
+                            if parent_handles:
+                                parent = parent_handles[0]
+                                oc_p = await parent.get_attribute("onclick")
+                                if oc_p:
+                                    rep_js_trigger = oc_p
+                                    logger.info(f"Found Representation JS trigger on parent: {oc_p}")
+                                    break
+                            
+                            # If no onclick found yet, keep this as candidate to click directly
+                            if not rep_element:
+                                rep_element = cand
+                                
+                except Exception as e:
+                    logger.warning(f"Error finding Representation trigger: {e}")
+                
+                if rep_js_trigger:
+                     rep_json = await extract_modal_data(page, js_trigger=rep_js_trigger)
+                elif rep_element:
+                     # logger.info("No JS trigger found for Representation, trying direct click.")
+                     rep_json = await extract_modal_data(page, trigger_element=rep_element)
+                
+                if rep_json:
+                     try:
+                         safe_bid = re.sub(r'[^A-Za-z0-9_-]', '_', bid_no)
+                         fname = os.path.join(REP_DIR, f"{safe_bid}.json")
+                         with open(fname, "w", encoding="utf-8") as f:
+                             f.write(rep_json)
+                         logger.info(f"Saved Representation JSON for {bid_no}")
+                     except Exception:
+                         logger.exception(f"Failed to save Representation JSON for {bid_no}")
 
                 # Corrigendum
-                # Pattern: <a>View Corrigendum</a>
-                corr_link = await c.query_selector("a:text-is('View Corrigendum')")
-                if corr_link:
-                     corr_json = await extract_modal_data(page, corr_link)
+                # User structure: <span onclick="view_corrigendum_modal(8316925)" data-bid="8316925">
+                # We extract the `data-bid` and trigger it directly via JS.
+                corr_js_trigger = None
+                
+                try:
+                    # Find span with 'data-bid' and 'View Corrigendum'
+                    spans = await c.query_selector_all("span[data-bid]")
+                    target_span = None
+                    for s in spans:
+                        txt = (await s.inner_text()) or ""
+                        if "View Corrigendum" in txt:
+                            target_span = s
+                            break
+                    
+                    if target_span:
+                        data_bid = await target_span.get_attribute("data-bid")
+                        if data_bid:
+                            corr_js_trigger = f"view_corrigendum_modal('{data_bid}')"
+                            # logger.info(f"Using JS trigger for Corrigendum: {corr_js_trigger}")
+                except Exception as e:
+                    pass
+                    # logger.warning(f"Error preparing Corrigendum JS trigger: {e}")
+
+                if corr_js_trigger:
+                     # logger.info(f"Found View Corrigendum trigger for {bid_no}")
+                     corr_json = await extract_modal_data(page, js_trigger=corr_js_trigger)
                      if corr_json:
                          try:
                              safe_bid = re.sub(r'[^A-Za-z0-9_-]', '_', bid_no)
                              fname = os.path.join(CORR_DIR, f"{safe_bid}.json")
                              with open(fname, "w", encoding="utf-8") as f:
                                  f.write(corr_json)
+                             logger.info(f"Saved Corrigendum JSON for {bid_no}")
                          except Exception:
                              logger.exception(f"Failed to save Corrigendum JSON for {bid_no}")
             except Exception:

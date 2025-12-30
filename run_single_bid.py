@@ -486,26 +486,55 @@ async def scrape_single_page_to_rows(page, page_no: int):
             corr_json = None
             try:
                 # Representation
-                # Use has-text for looser matching, often distinct enough
-                rep_links = await c.query_selector_all("a")
-                rep_link = None
-                for l in rep_links:
-                    if "View Representation" in (await l.inner_text()):
-                        rep_link = l
-                        break
+                # Pattern: <a>View Representation</a> often inside <span onclick="...">
+                rep_js_trigger = None
+                rep_element = None
+                try:
+                    # Find elements with text "View Representation"
+                    # We check 'a' and 'span'
+                    candidates = await c.query_selector_all("a, span")
+                    for cand in candidates:
+                        txt = (await cand.inner_text()) or ""
+                        if "View Representation" in txt:
+                            # Check if this element has onclick
+                            oc = await cand.get_attribute("onclick")
+                            if oc:
+                                rep_js_trigger = oc
+                                logger.info(f"Found Representation JS trigger on element: {oc}")
+                                break
+                            
+                            # Check parent
+                            parent_handles = await cand.xpath("..")
+                            if parent_handles:
+                                parent = parent_handles[0]
+                                oc_p = await parent.get_attribute("onclick")
+                                if oc_p:
+                                    rep_js_trigger = oc_p
+                                    logger.info(f"Found Representation JS trigger on parent: {oc_p}")
+                                    break
+                            
+                            # If no onclick found yet, keep this as candidate to click directly
+                            if not rep_element:
+                                rep_element = cand
+                                
+                except Exception as e:
+                    logger.warning(f"Error finding Representation trigger: {e}")
                 
-                if rep_link:
-                     logger.info(f"Found View Representation link for {bid_no}")
-                     rep_json = await extract_modal_data(page, rep_link)
-                     if rep_json:
-                         try:
-                             safe_bid = re.sub(r'[^A-Za-z0-9_-]', '_', bid_no)
-                             fname = os.path.join(REP_DIR, f"{safe_bid}.json")
-                             with open(fname, "w", encoding="utf-8") as f:
-                                 f.write(rep_json)
-                             logger.info(f"Saved Representation JSON for {bid_no}")
-                         except Exception:
-                             logger.exception(f"Failed to save Representation JSON for {bid_no}")
+                if rep_js_trigger:
+                     rep_json = await extract_modal_data(page, js_trigger=rep_js_trigger)
+                elif rep_element:
+                     logger.info("No JS trigger found for Representation, trying direct click.")
+                     rep_json = await extract_modal_data(page, trigger_element=rep_element)
+                
+                if rep_json:
+                     try:
+                         safe_bid = re.sub(r'[^A-Za-z0-9_-]', '_', bid_no)
+                         fname = os.path.join(REP_DIR, f"{safe_bid}.json")
+                         with open(fname, "w", encoding="utf-8") as f:
+                             f.write(rep_json)
+                         logger.info(f"Saved Representation JSON for {bid_no}")
+                     except Exception:
+                         logger.exception(f"Failed to save Representation JSON for {bid_no}")
 
                 # Corrigendum
                 # User structure: <span onclick="view_corrigendum_modal(8316925)" data-bid="8316925">

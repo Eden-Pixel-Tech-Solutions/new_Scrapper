@@ -381,3 +381,43 @@ Call log:
 2025-12-30 01:47:12,556 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
 2025-12-30 01:47:12,572 [INFO] DB: committed approx 1 rows.
 2025-12-30 01:47:13,579 [INFO] DB consumer shutting down.
+2025-12-30 03:51:16,728 [INFO] Loaded ML relevancy model and vectorizer.
+2025-12-30 03:51:17,174 [INFO] Matcher initialized.
+2025-12-30 03:51:28,732 [INFO] Use pytorch device_name: cpu
+2025-12-30 03:51:28,733 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-30 03:51:33,929 [INFO] Use pytorch device_name: cpu
+2025-12-30 03:51:33,929 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-30 03:51:38,977 [INFO] Use pytorch device_name: cpu
+2025-12-30 03:51:38,978 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-30 03:51:43,628 [INFO] Loaded global_relevancy.predict.
+2025-12-30 03:51:48,831 [INFO] Scraper starting with search query: 'GEM/2025/B/6919680'...
+2025-12-30 03:51:48,833 [INFO] DB consumer starting...
+2025-12-30 03:51:50,709 [INFO] Navigating to https://bidplus.gem.gov.in/all-bids ...
+2025-12-30 03:51:57,677 [INFO] Typing search query: GEM/2025/B/6919680
+2025-12-30 03:51:57,760 [INFO] Search submitted. Waiting for results...
+2025-12-30 03:52:00,840 [INFO] Found 1 records across 1 pages.
+2025-12-30 03:52:00,841 [INFO] Scraping page 1...
+2025-12-30 03:52:04,381 [INFO] Found 'View Corrigendum/Representation' link. Clicking it...
+2025-12-30 03:52:07,021 [INFO] Found Representation JS trigger on element: view_representation_modal(8620875)
+2025-12-30 03:52:07,022 [INFO] Triggering modal via JS: view_representation_modal(8620875)
+2025-12-30 03:52:12,325 [INFO] Saved Representation JSON for GEM/2025/B/6919680
+2025-12-30 03:52:12,380 [INFO] Using JS trigger for Corrigendum: view_corrigendum_modal('8620875')
+2025-12-30 03:52:12,381 [INFO] Found View Corrigendum trigger for GEM/2025/B/6919680
+2025-12-30 03:52:12,382 [INFO] Triggering modal via JS: view_corrigendum_modal('8620875')
+2025-12-30 03:52:14,785 [INFO] Saved Corrigendum JSON for GEM/2025/B/6919680
+2025-12-30 03:52:14,786 [INFO] Scraping finished.
+2025-12-30 03:52:14,786 [INFO] Scraper worker done. Shutting down browser.
+2025-12-30 03:52:15,137 [INFO] package: mysql.connector.plugins
+2025-12-30 03:52:15,137 [INFO] package: mysql.connector.plugins
+2025-12-30 03:52:15,138 [INFO] plugin_name: caching_sha2_password
+2025-12-30 03:52:15,138 [INFO] plugin_name: caching_sha2_password
+2025-12-30 03:52:15,139 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-12-30 03:52:15,139 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-12-30 03:52:15,145 [INFO] package: mysql.connector.plugins
+2025-12-30 03:52:15,146 [INFO] plugin_name: mysql_native_password
+2025-12-30 03:52:15,149 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-12-30 03:52:15,149 [INFO] package: mysql.connector.plugins
+2025-12-30 03:52:15,150 [INFO] plugin_name: mysql_native_password
+2025-12-30 03:52:15,151 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-12-30 03:52:15,168 [INFO] DB: committed approx 1 rows.
+2025-12-30 03:52:16,182 [INFO] DB consumer shutting down.

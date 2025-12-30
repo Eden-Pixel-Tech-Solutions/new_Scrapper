@@ -2374,3 +2374,251 @@ Traceback (most recent call last):
   File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
     raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
 playwright._impl._errors.TargetClosedError: Page.query_selector: Target page, context or browser has been closed
+2025-12-30 04:12:20,525 [INFO] Loaded ML relevancy model and vectorizer.
+2025-12-30 04:12:20,633 [INFO] Loaded Diagnostic keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_diagnostic.csv
+2025-12-30 04:12:20,642 [INFO] Loaded Endo keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_endo.csv
+2025-12-30 04:12:20,928 [INFO] Loaded Overall keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_sheet1.csv
+2025-12-30 04:12:21,030 [INFO] Matcher initialized with loaded KeywordStore.
+2025-12-30 04:12:30,555 [INFO] Use pytorch device_name: cpu
+2025-12-30 04:12:30,556 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-30 04:12:35,597 [INFO] Use pytorch device_name: cpu
+2025-12-30 04:12:35,598 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-30 04:12:40,498 [INFO] Use pytorch device_name: cpu
+2025-12-30 04:12:40,499 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2025-12-30 04:12:44,575 [INFO] Loaded global_relevancy.predict successfully.
+2025-12-30 04:12:44,582 [INFO] Scraper starting...
+2025-12-30 04:12:44,583 [INFO] DB consumer starting...
+2025-12-30 04:12:52,432 [INFO] Applying sorting: Bid Start Date -> Latest
+2025-12-30 04:12:54,673 [INFO] Found 39224 records across 3923 pages.
+2025-12-30 04:13:01,370 [INFO] Found Representation JS trigger on element: view_representation_modal(8774458)
+2025-12-30 04:13:01,371 [INFO] Triggering modal via JS: view_representation_modal(8774458)
+2025-12-30 04:13:03,029 [INFO] Saved Representation JSON for GEM/2025/B/6997612
+2025-12-30 04:13:23,946 [INFO] Found Representation JS trigger on element: view_representation_modal(8774405)
+2025-12-30 04:13:23,946 [INFO] Triggering modal via JS: view_representation_modal(8774405)
+2025-12-30 04:13:25,595 [INFO] Saved Representation JSON for GEM/2025/B/6869618
+2025-12-30 04:13:28,714 [INFO] package: mysql.connector.plugins
+2025-12-30 04:13:28,715 [INFO] plugin_name: caching_sha2_password
+2025-12-30 04:13:28,716 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-12-30 04:13:28,720 [INFO] package: mysql.connector.plugins
+2025-12-30 04:13:28,721 [INFO] plugin_name: mysql_native_password
+2025-12-30 04:13:28,724 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-12-30 04:13:28,735 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:13:28,741 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:13:28,743 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:13:34,133 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:13:34,151 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:13:34,155 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:13:42,727 [INFO] Found Representation JS trigger on element: view_representation_modal(8774405)
+2025-12-30 04:13:42,729 [INFO] Triggering modal via JS: view_representation_modal(8774405)
+2025-12-30 04:13:44,307 [INFO] Saved Representation JSON for GEM/2025/B/6869618
+2025-12-30 04:14:02,621 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:14:02,628 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:14:02,631 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:14:07,960 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:14:07,976 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:14:07,981 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:14:19,970 [INFO] Found Representation JS trigger on element: view_representation_modal(8774202)
+2025-12-30 04:14:19,971 [INFO] Triggering modal via JS: view_representation_modal(8774202)
+2025-12-30 04:14:21,625 [INFO] Saved Representation JSON for GEM/2025/B/6764339
+2025-12-30 04:14:33,393 [INFO] Found Representation JS trigger on element: view_representation_modal(8774246)
+2025-12-30 04:14:33,394 [INFO] Triggering modal via JS: view_representation_modal(8774246)
+2025-12-30 04:14:35,088 [INFO] Saved Representation JSON for GEM/2025/B/6971435
+2025-12-30 04:14:38,562 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:14:38,570 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:14:38,577 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:14:43,250 [INFO] Found Representation JS trigger on element: view_representation_modal(8774235)
+2025-12-30 04:14:43,251 [INFO] Triggering modal via JS: view_representation_modal(8774235)
+2025-12-30 04:14:43,931 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:14:43,946 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:14:43,948 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:14:44,913 [INFO] Saved Representation JSON for GEM/2025/B/6869238
+2025-12-30 04:15:12,643 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:15:12,651 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:15:12,654 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:15:18,050 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:15:18,065 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:15:18,072 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:15:46,056 [INFO] Found Representation JS trigger on element: view_representation_modal(8774291)
+2025-12-30 04:15:46,057 [INFO] Triggering modal via JS: view_representation_modal(8774291)
+2025-12-30 04:15:47,696 [INFO] Saved Representation JSON for GEM/2025/B/6979921
+2025-12-30 04:15:48,033 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:15:48,039 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:15:48,046 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:15:53,447 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:15:53,462 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:15:53,474 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:16:18,656 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:16:18,663 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:16:18,666 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:16:24,142 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:16:24,162 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:16:24,165 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:16:43,578 [INFO] Found Representation JS trigger on element: view_representation_modal(8774035)
+2025-12-30 04:16:43,579 [INFO] Triggering modal via JS: view_representation_modal(8774035)
+2025-12-30 04:16:45,129 [INFO] Saved Representation JSON for GEM/2025/B/6871261
+2025-12-30 04:16:50,942 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:16:50,948 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:16:50,955 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:16:56,299 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:16:56,313 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:16:56,316 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:17:22,262 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:17:22,267 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:17:22,292 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:17:27,903 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:17:27,915 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:17:27,918 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:17:52,448 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:17:52,452 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:17:52,461 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:17:57,799 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:17:57,806 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:17:57,808 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:18:02,350 [INFO] Found Representation JS trigger on element: view_representation_modal(8774126)
+2025-12-30 04:18:02,351 [INFO] Triggering modal via JS: view_representation_modal(8774126)
+2025-12-30 04:18:03,897 [INFO] Saved Representation JSON for GEM/2025/B/6953737
+2025-12-30 04:18:23,303 [INFO] Found Representation JS trigger on element: view_representation_modal(8774168)
+2025-12-30 04:18:23,304 [INFO] Triggering modal via JS: view_representation_modal(8774168)
+2025-12-30 04:18:24,962 [INFO] Saved Representation JSON for GEM/2025/B/6963522
+2025-12-30 04:18:25,271 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:18:25,287 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:18:25,292 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:18:31,131 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:18:31,149 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:18:31,155 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:18:50,841 [INFO] Found Representation JS trigger on element: view_representation_modal(8773908)
+2025-12-30 04:18:50,842 [INFO] Triggering modal via JS: view_representation_modal(8773908)
+2025-12-30 04:18:52,451 [INFO] Saved Representation JSON for GEM/2025/B/6712402
+2025-12-30 04:18:58,539 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:18:58,547 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:18:58,552 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:19:03,922 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:19:03,930 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:19:03,933 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:19:23,374 [INFO] Found Representation JS trigger on element: view_representation_modal(8773836)
+2025-12-30 04:19:23,375 [INFO] Triggering modal via JS: view_representation_modal(8773836)
+2025-12-30 04:19:24,991 [INFO] Saved Representation JSON for GEM/2025/B/6887702
+2025-12-30 04:19:30,970 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:19:30,977 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:19:30,989 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:19:36,346 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:19:36,359 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:19:36,366 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:19:39,200 [INFO] Found Representation JS trigger on element: view_representation_modal(8773539)
+2025-12-30 04:19:39,201 [INFO] Triggering modal via JS: view_representation_modal(8773539)
+2025-12-30 04:19:40,811 [INFO] Saved Representation JSON for GEM/2025/B/6676826
+2025-12-30 04:19:43,565 [INFO] Found Representation JS trigger on element: view_representation_modal(8773603)
+2025-12-30 04:19:43,566 [INFO] Triggering modal via JS: view_representation_modal(8773603)
+2025-12-30 04:19:45,175 [INFO] Saved Representation JSON for GEM/2025/B/6862592
+2025-12-30 04:20:06,030 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:20:06,038 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:20:06,044 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:20:11,375 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:20:11,386 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:20:11,391 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:20:36,819 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:20:36,826 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:20:36,829 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:20:42,172 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:20:42,193 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:20:42,196 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:20:45,036 [INFO] Found Representation JS trigger on element: view_representation_modal(8773539)
+2025-12-30 04:20:45,037 [INFO] Triggering modal via JS: view_representation_modal(8773539)
+2025-12-30 04:20:46,682 [INFO] Saved Representation JSON for GEM/2025/B/6676826
+2025-12-30 04:20:49,413 [INFO] Found Representation JS trigger on element: view_representation_modal(8773603)
+2025-12-30 04:20:49,414 [INFO] Triggering modal via JS: view_representation_modal(8773603)
+2025-12-30 04:20:51,041 [INFO] Saved Representation JSON for GEM/2025/B/6862592
+2025-12-30 04:21:11,032 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:21:11,038 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:21:11,042 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:21:16,643 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:21:16,662 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:21:16,666 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:21:18,955 [INFO] Found Representation JS trigger on element: view_representation_modal(8773836)
+2025-12-30 04:21:18,956 [INFO] Triggering modal via JS: view_representation_modal(8773836)
+2025-12-30 04:21:20,570 [INFO] Saved Representation JSON for GEM/2025/B/6887702
+2025-12-30 04:21:29,542 [INFO] Found Representation JS trigger on element: view_representation_modal(8773908)
+2025-12-30 04:21:29,542 [INFO] Triggering modal via JS: view_representation_modal(8773908)
+2025-12-30 04:21:31,160 [INFO] Saved Representation JSON for GEM/2025/B/6712402
+2025-12-30 04:21:42,562 [INFO] Found Representation JS trigger on element: view_representation_modal(8773760)
+2025-12-30 04:21:42,563 [INFO] Triggering modal via JS: view_representation_modal(8773760)
+2025-12-30 04:21:44,175 [INFO] Saved Representation JSON for GEM/2025/B/6936703
+2025-12-30 04:21:47,810 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:21:47,815 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:21:47,819 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:21:53,709 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:21:53,720 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:21:53,731 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:22:19,949 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:22:19,955 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:22:19,961 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:22:25,307 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:22:25,321 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:22:25,327 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:22:44,761 [INFO] Snapshot saved: snapshot_2025-12-30_04-22-44.csv
+2025-12-30 04:22:51,374 [INFO] Found Representation JS trigger on element: view_representation_modal(8773022)
+2025-12-30 04:22:51,375 [INFO] Triggering modal via JS: view_representation_modal(8773022)
+2025-12-30 04:22:52,993 [INFO] Saved Representation JSON for GEM/2025/B/6948156
+2025-12-30 04:22:53,311 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:22:53,316 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:22:53,334 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:22:58,647 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:22:58,657 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:22:58,674 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:23:23,711 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:23:23,718 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:23:23,721 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:23:29,037 [INFO] Found Representation JS trigger on element: view_representation_modal(8773206)
+2025-12-30 04:23:29,038 [INFO] Triggering modal via JS: view_representation_modal(8773206)
+2025-12-30 04:23:29,067 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:23:29,079 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:23:29,082 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:23:30,665 [INFO] Saved Representation JSON for GEM/2025/B/6462857
+2025-12-30 04:23:56,787 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:23:56,792 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:23:56,800 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:24:02,223 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:24:02,242 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:24:02,245 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:24:27,806 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:24:27,812 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:24:27,816 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:24:33,295 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:24:33,309 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:24:33,318 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:24:49,860 [INFO] Found Representation JS trigger on element: view_representation_modal(8773274)
+2025-12-30 04:24:49,861 [INFO] Triggering modal via JS: view_representation_modal(8773274)
+2025-12-30 04:24:51,490 [INFO] Saved Representation JSON for GEM/2025/B/7004197
+2025-12-30 04:25:01,042 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:25:01,048 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:25:01,054 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:25:06,641 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:25:06,654 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:25:06,665 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:25:14,998 [INFO] Found Representation JS trigger on element: view_representation_modal(8773417)
+2025-12-30 04:25:14,999 [INFO] Triggering modal via JS: view_representation_modal(8773417)
+2025-12-30 04:25:16,623 [INFO] Saved Representation JSON for GEM/2025/B/6895444
+2025-12-30 04:25:31,095 [INFO] Found Representation JS trigger on element: view_representation_modal(8773127)
+2025-12-30 04:25:31,096 [INFO] Triggering modal via JS: view_representation_modal(8773127)
+2025-12-30 04:25:32,718 [INFO] Saved Representation JSON for GEM/2025/B/6495995
+2025-12-30 04:25:36,038 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:25:36,045 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:25:36,049 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:25:41,739 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:25:41,757 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:25:41,761 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:26:06,978 [INFO] Found Representation JS trigger on element: view_representation_modal(8773417)
+2025-12-30 04:26:06,979 [INFO] Triggering modal via JS: view_representation_modal(8773417)
+2025-12-30 04:26:08,599 [INFO] Saved Representation JSON for GEM/2025/B/6895444
+2025-12-30 04:26:08,935 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:26:08,939 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:26:08,951 [INFO] DB: committed approx 2 rows (gem + main).
+2025-12-30 04:26:14,342 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2025-12-30 04:26:14,354 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2025-12-30 04:26:14,579 [INFO] DB: committed approx 18 rows (gem + main).
+2025-12-30 04:26:31,677 [INFO] Found Representation JS trigger on element: view_representation_modal(8773466)
+2025-12-30 04:26:31,677 [INFO] Triggering modal via JS: view_representation_modal(8773466)
+2025-12-30 04:26:33,296 [INFO] Saved Representation JSON for GEM/2025/B/6675780
+2025-12-30 04:26:42,163 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2025-12-30 04:26:42,169 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2025-12-30 04:26:42,172 [INFO] DB: committed approx 2 rows (gem + main).
