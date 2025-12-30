@@ -63,8 +63,8 @@ DB_WORKER_THREADS = int(os.getenv("DB_WORKER_THREADS", "6"))
 # DB config (override via env vars if you like)
 DB_CONFIG = {
     "host": os.getenv("DB_HOST", "localhost"),
-    "user": os.getenv("DB_USER", "root"),
-    "password": os.getenv("DB_PASSWORD", ""),
+    "user": os.getenv("DB_USER", "tender_user"),
+    "password": os.getenv("DB_PASSWORD", "StrongPassword@123"),
     "database": os.getenv("DB_NAME", "tender_automation_with_ai"),
     "autocommit": False,
     "charset": "utf8mb4",
@@ -771,7 +771,7 @@ async def scraper_worker(queue: asyncio.Queue, interval_seconds: int = 60):
 
     # Playwright context options for production:
     playwright_launch_args = {
-        "channel": "chrome",
+        # "channel": "chrome",  <-- Commented out to use the default bundled Chromium
         "headless": True,
         "args": [
             "--disable-blink-features=AutomationControlled",

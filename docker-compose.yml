@@ -11,7 +11,7 @@ services:
 
   worker:
     build: .
-    container_name: tender_worker
+    # container_name: tender_worker  <-- Removed to allow scaling
     # Scale this by running: docker-compose up --scale worker=5
     restart: always
     environment:
