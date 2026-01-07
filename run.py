@@ -51,7 +51,7 @@ from tasks import process_tender, calculate_relevancy
 # ---------------------------
 # GLOBAL STATUS & SERVER CONFIG
 # ---------------------------
-STATUS_PORT = 8000
+STATUS_PORT = 7315
 GLOBAL_STATUS = {
     "state": "Initializing",
     "page_no": 0,
