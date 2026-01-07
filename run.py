@@ -60,9 +60,13 @@ GLOBAL_STATUS = {
     "items_scraped": 0,
     "items_committed": 0,
     "db_count": 0,
+    "start_time": time.time(),
+    "etc_seconds": -1,
     "last_updated": str(datetime.now()),
+
     "logs": collections.deque(maxlen=100)
 }
+
 
 
 class LogCaptureHandler(logging.Handler):
@@ -1016,8 +1020,27 @@ async def db_consumer(queue: asyncio.Queue, executor: ThreadPoolExecutor):
                     # Update status
                     GLOBAL_STATUS["items_committed"] += committed
                     GLOBAL_STATUS["last_updated"] = str(datetime.now())
+                    
+                    # Calculate ETC
+                    try:
+                        elapsed = time.time() - GLOBAL_STATUS["start_time"]
+                        committed_total = GLOBAL_STATUS["items_committed"]
+                        total_records = GLOBAL_STATUS["total_records"]
+                        
+                        if committed_total > 0 and elapsed > 0:
+                            rate = committed_total / elapsed # items per second
+                            remaining_items = total_records - committed_total
+                            
+                            if remaining_items > 0:
+                                GLOBAL_STATUS["etc_seconds"] = remaining_items / rate
+                            else:
+                                GLOBAL_STATUS["etc_seconds"] = 0
+                    except Exception:
+                         pass
+
 
                 # -----------------------------------
+
         except Exception:
             logger.exception("Exception while flushing buffers.")
         finally:

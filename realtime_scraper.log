@@ -7103,3 +7103,397 @@ NoneType: None
 2026-01-07 16:25:40,323 [INFO] Queued 9 tasks to Redis/Docker.
 2026-01-07 16:25:40,964 [INFO] Received stop signal — shutting down...
 2026-01-07 16:25:41,965 [INFO] Shutdown requested via KeyboardInterrupt
+2026-01-07 17:24:55,112 [INFO] Loaded ML relevancy model and vectorizer.
+2026-01-07 17:24:55,496 [INFO] Loaded Diagnostic keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_diagnostic.csv
+2026-01-07 17:24:55,525 [INFO] Loaded Endo keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_endo.csv
+2026-01-07 17:24:55,700 [INFO] Loaded Overall keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_sheet1.csv
+2026-01-07 17:24:55,777 [INFO] Matcher initialized with loaded KeywordStore.
+2026-01-07 17:25:39,180 [INFO] Use pytorch device_name: cpu
+2026-01-07 17:25:39,181 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2026-01-07 17:26:07,237 [INFO] Use pytorch device_name: cpu
+2026-01-07 17:26:07,241 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2026-01-07 17:26:18,969 [INFO] Use pytorch device_name: cpu
+2026-01-07 17:26:18,971 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2026-01-07 17:26:28,037 [INFO] Loaded global_relevancy.predict successfully.
+2026-01-07 17:26:28,044 [INFO] Status Dashboard running at http://localhost:7315
+2026-01-07 17:26:28,044 [INFO] Scraper starting...
+2026-01-07 17:26:28,045 [INFO] DB consumer starting...
+2026-01-07 17:27:11,925 [INFO] Applying sorting: Bid Start Date -> Latest
+2026-01-07 17:27:14,232 [INFO] Found 39485 records across 3949 pages.
+2026-01-07 17:27:25,777 [INFO] Found Representation JS trigger on element: view_representation_modal(8809962)
+2026-01-07 17:27:25,779 [INFO] Triggering modal via JS: view_representation_modal(8809962)
+2026-01-07 17:27:27,537 [INFO] Saved Representation JSON for GEM/2025/B/6769871
+2026-01-07 17:27:51,596 [INFO] package: mysql.connector.plugins
+2026-01-07 17:27:51,596 [INFO] package: mysql.connector.plugins
+2026-01-07 17:27:51,597 [INFO] plugin_name: caching_sha2_password
+2026-01-07 17:27:51,597 [INFO] plugin_name: caching_sha2_password
+2026-01-07 17:27:51,598 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2026-01-07 17:27:51,598 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2026-01-07 17:27:51,602 [INFO] package: mysql.connector.plugins
+2026-01-07 17:27:51,603 [INFO] plugin_name: mysql_native_password
+2026-01-07 17:27:51,605 [INFO] package: mysql.connector.plugins
+2026-01-07 17:27:51,606 [INFO] plugin_name: mysql_native_password
+2026-01-07 17:27:51,612 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2026-01-07 17:27:51,612 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2026-01-07 17:27:51,621 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2026-01-07 17:27:51,633 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2026-01-07 17:27:51,636 [INFO] DB: committed approx 2 rows (gem + main).
+2026-01-07 17:28:00,122 [ERROR] Connection to Redis lost: Retry (0/20) now.
+2026-01-07 17:28:04,187 [ERROR] Connection to Redis lost: Retry (1/20) in 1.00 second.
+2026-01-07 17:28:09,257 [ERROR] Connection to Redis lost: Retry (2/20) in 1.00 second.
+2026-01-07 17:28:14,334 [ERROR] Connection to Redis lost: Retry (3/20) in 1.00 second.
+2026-01-07 17:28:19,406 [ERROR] Connection to Redis lost: Retry (4/20) in 1.00 second.
+2026-01-07 17:28:24,488 [ERROR] Connection to Redis lost: Retry (5/20) in 1.00 second.
+2026-01-07 17:28:29,603 [ERROR] Connection to Redis lost: Retry (6/20) in 1.00 second.
+2026-01-07 17:28:34,674 [ERROR] Connection to Redis lost: Retry (7/20) in 1.00 second.
+2026-01-07 17:28:40,175 [ERROR] Connection to Redis lost: Retry (8/20) in 1.00 second.
+2026-01-07 17:28:45,259 [ERROR] Connection to Redis lost: Retry (9/20) in 1.00 second.
+2026-01-07 17:28:50,353 [ERROR] Connection to Redis lost: Retry (10/20) in 1.00 second.
+2026-01-07 17:28:55,459 [ERROR] Connection to Redis lost: Retry (11/20) in 1.00 second.
+2026-01-07 17:29:00,558 [ERROR] Connection to Redis lost: Retry (12/20) in 1.00 second.
+2026-01-07 17:29:05,638 [ERROR] Connection to Redis lost: Retry (13/20) in 1.00 second.
+2026-01-07 17:29:10,708 [ERROR] Connection to Redis lost: Retry (14/20) in 1.00 second.
+2026-01-07 17:29:15,787 [ERROR] Connection to Redis lost: Retry (15/20) in 1.00 second.
+2026-01-07 17:29:20,861 [ERROR] Connection to Redis lost: Retry (16/20) in 1.00 second.
+2026-01-07 17:29:25,919 [ERROR] Connection to Redis lost: Retry (17/20) in 1.00 second.
+2026-01-07 17:29:31,008 [ERROR] Connection to Redis lost: Retry (18/20) in 1.00 second.
+2026-01-07 17:29:36,090 [ERROR] Connection to Redis lost: Retry (19/20) in 1.00 second.
+2026-01-07 17:29:41,142 [CRITICAL] 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+2026-01-07 17:29:41,144 [ERROR] Failed to queue Redis task for GEM/2025/B/7005957: 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+2026-01-07 17:29:41,144 [INFO] Queued 0 tasks to Redis/Docker.
+2026-01-07 17:29:47,259 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2026-01-07 17:29:47,267 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2026-01-07 17:29:47,269 [INFO] DB: committed approx 18 rows (gem + main).
+2026-01-07 17:29:55,478 [ERROR] Connection to Redis lost: Retry (0/20) now.
+2026-01-07 17:29:59,558 [ERROR] Connection to Redis lost: Retry (1/20) in 1.00 second.
+2026-01-07 17:30:04,637 [ERROR] Connection to Redis lost: Retry (2/20) in 1.00 second.
+2026-01-07 17:30:09,695 [ERROR] Connection to Redis lost: Retry (3/20) in 1.00 second.
+2026-01-07 17:30:14,753 [ERROR] Connection to Redis lost: Retry (4/20) in 1.00 second.
+2026-01-07 17:30:19,808 [ERROR] Connection to Redis lost: Retry (5/20) in 1.00 second.
+2026-01-07 17:30:24,897 [ERROR] Connection to Redis lost: Retry (6/20) in 1.00 second.
+2026-01-07 17:30:29,965 [ERROR] Connection to Redis lost: Retry (7/20) in 1.00 second.
+2026-01-07 17:30:35,029 [ERROR] Connection to Redis lost: Retry (8/20) in 1.00 second.
+2026-01-07 17:30:40,089 [ERROR] Connection to Redis lost: Retry (9/20) in 1.00 second.
+2026-01-07 17:30:45,159 [ERROR] Connection to Redis lost: Retry (10/20) in 1.00 second.
+2026-01-07 17:30:50,235 [ERROR] Connection to Redis lost: Retry (11/20) in 1.00 second.
+2026-01-07 17:30:55,302 [ERROR] Connection to Redis lost: Retry (12/20) in 1.00 second.
+2026-01-07 17:31:00,383 [ERROR] Connection to Redis lost: Retry (13/20) in 1.00 second.
+2026-01-07 17:31:05,440 [ERROR] Connection to Redis lost: Retry (14/20) in 1.00 second.
+2026-01-07 17:31:10,510 [ERROR] Connection to Redis lost: Retry (15/20) in 1.00 second.
+2026-01-07 17:31:15,592 [ERROR] Connection to Redis lost: Retry (16/20) in 1.00 second.
+2026-01-07 17:31:20,679 [ERROR] Connection to Redis lost: Retry (17/20) in 1.00 second.
+2026-01-07 17:31:25,750 [ERROR] Connection to Redis lost: Retry (18/20) in 1.00 second.
+2026-01-07 17:31:30,816 [ERROR] Connection to Redis lost: Retry (19/20) in 1.00 second.
+2026-01-07 17:31:35,899 [CRITICAL] 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+2026-01-07 17:31:35,900 [ERROR] Failed to queue Redis task for GEM/2025/B/6973253: 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+2026-01-07 17:31:44,045 [ERROR] Connection to Redis lost: Retry (0/20) now.
+2026-01-07 17:31:48,124 [ERROR] Connection to Redis lost: Retry (1/20) in 1.00 second.
+2026-01-07 17:31:53,203 [ERROR] Connection to Redis lost: Retry (2/20) in 1.00 second.
+2026-01-07 17:31:58,280 [ERROR] Connection to Redis lost: Retry (3/20) in 1.00 second.
+2026-01-07 17:32:03,338 [ERROR] Connection to Redis lost: Retry (4/20) in 1.00 second.
+2026-01-07 17:32:08,384 [ERROR] Connection to Redis lost: Retry (5/20) in 1.00 second.
+2026-01-07 17:32:13,456 [ERROR] Connection to Redis lost: Retry (6/20) in 1.00 second.
+2026-01-07 17:32:18,534 [ERROR] Connection to Redis lost: Retry (7/20) in 1.00 second.
+2026-01-07 17:32:23,606 [ERROR] Connection to Redis lost: Retry (8/20) in 1.00 second.
+2026-01-07 17:32:28,682 [ERROR] Connection to Redis lost: Retry (9/20) in 1.00 second.
+2026-01-07 17:32:33,737 [ERROR] Connection to Redis lost: Retry (10/20) in 1.00 second.
+2026-01-07 17:32:38,807 [ERROR] Connection to Redis lost: Retry (11/20) in 1.00 second.
+2026-01-07 17:32:43,870 [ERROR] Connection to Redis lost: Retry (12/20) in 1.00 second.
+2026-01-07 17:32:48,924 [ERROR] Connection to Redis lost: Retry (13/20) in 1.00 second.
+2026-01-07 17:32:53,977 [ERROR] Connection to Redis lost: Retry (14/20) in 1.00 second.
+2026-01-07 17:32:59,047 [ERROR] Connection to Redis lost: Retry (15/20) in 1.00 second.
+2026-01-07 17:33:04,098 [ERROR] Connection to Redis lost: Retry (16/20) in 1.00 second.
+2026-01-07 17:33:09,173 [ERROR] Connection to Redis lost: Retry (17/20) in 1.00 second.
+2026-01-07 17:33:14,232 [ERROR] Connection to Redis lost: Retry (18/20) in 1.00 second.
+2026-01-07 17:33:19,308 [ERROR] Connection to Redis lost: Retry (19/20) in 1.00 second.
+2026-01-07 17:33:24,384 [CRITICAL] 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+2026-01-07 17:33:24,385 [ERROR] Failed to queue Redis task for GEM/2025/B/6769871: 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+2026-01-07 17:33:32,534 [ERROR] Connection to Redis lost: Retry (0/20) now.
+2026-01-07 17:33:36,590 [ERROR] Connection to Redis lost: Retry (1/20) in 1.00 second.
+2026-01-07 17:33:41,653 [ERROR] Connection to Redis lost: Retry (2/20) in 1.00 second.
+2026-01-07 17:33:46,745 [ERROR] Connection to Redis lost: Retry (3/20) in 1.00 second.
+2026-01-07 17:33:51,779 [ERROR] Connection to Redis lost: Retry (4/20) in 1.00 second.
+2026-01-07 17:33:56,847 [ERROR] Connection to Redis lost: Retry (5/20) in 1.00 second.
+2026-01-07 17:34:01,921 [ERROR] Connection to Redis lost: Retry (6/20) in 1.00 second.
+2026-01-07 17:34:06,989 [ERROR] Connection to Redis lost: Retry (7/20) in 1.00 second.
+2026-01-07 17:34:12,071 [ERROR] Connection to Redis lost: Retry (8/20) in 1.00 second.
+2026-01-07 17:34:17,129 [ERROR] Connection to Redis lost: Retry (9/20) in 1.00 second.
+2026-01-07 17:34:22,215 [ERROR] Connection to Redis lost: Retry (10/20) in 1.00 second.
+2026-01-07 17:34:27,292 [ERROR] Connection to Redis lost: Retry (11/20) in 1.00 second.
+2026-01-07 17:34:32,365 [ERROR] Connection to Redis lost: Retry (12/20) in 1.00 second.
+2026-01-07 17:34:37,436 [ERROR] Connection to Redis lost: Retry (13/20) in 1.00 second.
+2026-01-07 17:34:42,511 [ERROR] Connection to Redis lost: Retry (14/20) in 1.00 second.
+2026-01-07 17:34:47,585 [ERROR] Connection to Redis lost: Retry (15/20) in 1.00 second.
+2026-01-07 17:34:52,649 [ERROR] Connection to Redis lost: Retry (16/20) in 1.00 second.
+2026-01-07 17:34:57,741 [ERROR] Connection to Redis lost: Retry (17/20) in 1.00 second.
+2026-01-07 17:35:02,812 [ERROR] Connection to Redis lost: Retry (18/20) in 1.00 second.
+2026-01-07 17:35:07,880 [ERROR] Connection to Redis lost: Retry (19/20) in 1.00 second.
+2026-01-07 17:35:12,949 [CRITICAL] 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+2026-01-07 17:35:12,952 [ERROR] Failed to queue Redis task for GEM/2025/B/7008084: 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+2026-01-07 17:35:21,082 [ERROR] Connection to Redis lost: Retry (0/20) now.
+2026-01-07 17:35:25,132 [ERROR] Connection to Redis lost: Retry (1/20) in 1.00 second.
+2026-01-07 17:35:30,215 [ERROR] Connection to Redis lost: Retry (2/20) in 1.00 second.
+2026-01-07 17:35:35,272 [ERROR] Connection to Redis lost: Retry (3/20) in 1.00 second.
+2026-01-07 17:35:40,350 [ERROR] Connection to Redis lost: Retry (4/20) in 1.00 second.
+2026-01-07 17:35:45,430 [ERROR] Connection to Redis lost: Retry (5/20) in 1.00 second.
+2026-01-07 17:35:50,506 [ERROR] Connection to Redis lost: Retry (6/20) in 1.00 second.
+2026-01-07 17:35:55,583 [ERROR] Connection to Redis lost: Retry (7/20) in 1.00 second.
+2026-01-07 17:36:00,659 [ERROR] Connection to Redis lost: Retry (8/20) in 1.00 second.
+2026-01-07 17:36:05,732 [ERROR] Connection to Redis lost: Retry (9/20) in 1.00 second.
+2026-01-07 17:36:10,804 [ERROR] Connection to Redis lost: Retry (10/20) in 1.00 second.
+2026-01-07 17:36:13,919 [INFO] Received stop signal — shutting down...
+2026-01-07 17:36:14,919 [INFO] Shutdown requested via KeyboardInterrupt
+2026-01-07 17:36:15,196 [ERROR] Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py:1150> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\connection.py", line 855, in connect_check_health
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\retry.py", line 116, in call_with_retry
+    return do()
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\connection.py", line 856, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\connection.py", line 1306, in _connect
+    raise err
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\connection.py", line 1290, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\celery\backends\redis.py", line 130, in reconnect_on_error
+    yield
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\celery\backends\redis.py", line 180, in _consume_from
+    self._pubsub.subscribe(key)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\client.py", line 1090, in subscribe
+    ret_val = self.execute_command("SUBSCRIBE", *new_channels.keys())
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\client.py", line 914, in execute_command
+    self.connection = self.connection_pool.get_connection()
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\utils.py", line 196, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\connection.py", line 2603, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\connection.py", line 846, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\connection.py", line 863, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\connection.py", line 1290, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 1191, in <module>
+    handle_signal()
+    ~~~~~~~~~~~~~^^
+  File "C:\Python313\Lib\asyncio\runners.py", line 194, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\asyncio\runners.py", line 62, in __exit__
+    self.close()
+    ~~~~~~~~~~^^
+  File "C:\Python313\Lib\asyncio\runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+    ~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python313\Lib\asyncio\runners.py", line 206, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "C:\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Python313\Lib\asyncio\base_events.py", line 2042, in _run_once
+    handle._run()
+    ~~~~~~~~~~~^^
+  File "C:\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 1176, in main
+  File "C:\Python313\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python313\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python313\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    ~~~~~~~~~~~~~~~~^^
+  File "C:\Python313\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Python313\Lib\asyncio\base_events.py", line 2042, in _run_once
+    handle._run()
+    ~~~~~~~~~~~^^
+  File "C:\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 1083, in db_consumer
+    if (
+    
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py", line 1010, in flush_buffers
+    }
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\celery\app\task.py", line 608, in apply_async
+    return app.send_task(
+           ~~~~~~~~~~~~~^
+        self.name, args, kwargs, task_id=task_id, producer=producer,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **options
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\celery\app\base.py", line 946, in send_task
+    self.backend.on_task_call(P, task_id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\celery\backends\redis.py", line 417, in on_task_call
+    self.result_consumer.consume_from(task_id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\celery\backends\redis.py", line 172, in consume_from
+    return self.start(task_id)
+           ~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\celery\backends\redis.py", line 150, in start
+    self._consume_from(initial_task_id)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\celery\backends\redis.py", line 179, in _consume_from
+    with self.reconnect_on_error():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\celery\backends\redis.py", line 133, in reconnect_on_error
+    self._ensure(self._reconnect_pubsub, ())
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\celery\backends\redis.py", line 428, in ensure
+    return retry_over_time(
+        fun, self.connection_errors, args, {},
+        partial(self.on_connection_error, max_retries),
+        **retry_policy)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\kombu\utils\functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\celery\backends\redis.py", line 109, in _reconnect_pubsub
+    metas = self.backend.client.mget(self.subscribed_to)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\commands\core.py", line 2091, in mget
+    return self.execute_command("MGET", *args, **options)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\client.py", line 657, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\client.py", line 663, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\utils.py", line 196, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\connection.py", line 2603, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\connection.py", line 846, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\connection.py", line 855, in connect_check_health
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\retry.py", line 116, in call_with_retry
+    return do()
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\connection.py", line 856, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\venv\Lib\site-packages\redis\connection.py", line 1303, in _connect
+    sock.close()
+    ~~~~~~~~~~^^
+  File "C:\Python313\Lib\socket.py", line 501, in close
+    def close(self):
+    
+  File "C:\Python313\Lib\asyncio\runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+2026-01-07 17:36:15,535 [ERROR] Task was destroyed but it is pending!
+task: <Task cancelling name='Task-2' coro=<scraper_worker() running at C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\run.py:882> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[gather.<locals>._done_callback() at C:\Python313\Lib\asyncio\tasks.py:820, gather.<locals>._done_callback() at C:\Python313\Lib\asyncio\tasks.py:820]>
+2026-01-07 17:36:23,634 [INFO] Loaded ML relevancy model and vectorizer.
+2026-01-07 17:36:23,700 [INFO] Loaded Diagnostic keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_diagnostic.csv
+2026-01-07 17:36:23,705 [INFO] Loaded Endo keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_endo.csv
+2026-01-07 17:36:23,869 [INFO] Loaded Overall keywords: C:\Users\rexro\OneDrive\Desktop\TENDER\new_Scrapper\app\data\keywords_sheet1.csv
+2026-01-07 17:36:23,952 [INFO] Matcher initialized with loaded KeywordStore.
+2026-01-07 17:36:30,282 [INFO] Use pytorch device_name: cpu
+2026-01-07 17:36:30,282 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2026-01-07 17:36:36,904 [INFO] Use pytorch device_name: cpu
+2026-01-07 17:36:36,905 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2026-01-07 17:36:43,262 [INFO] Use pytorch device_name: cpu
+2026-01-07 17:36:43,264 [INFO] Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+2026-01-07 17:36:49,701 [INFO] Loaded global_relevancy.predict successfully.
+2026-01-07 17:36:49,707 [INFO] Status Dashboard running at http://localhost:7315
+2026-01-07 17:36:49,708 [INFO] Scraper starting...
+2026-01-07 17:36:49,708 [INFO] DB consumer starting...
+2026-01-07 17:36:59,585 [INFO] Applying sorting: Bid Start Date -> Latest
+2026-01-07 17:37:01,825 [INFO] Found 39606 records across 3961 pages.
+2026-01-07 17:37:08,419 [INFO] Found Representation JS trigger on element: view_representation_modal(8810078)
+2026-01-07 17:37:08,420 [INFO] Triggering modal via JS: view_representation_modal(8810078)
+2026-01-07 17:37:10,107 [INFO] Saved Representation JSON for GEM/2025/B/6873829
+2026-01-07 17:37:41,836 [INFO] package: mysql.connector.plugins
+2026-01-07 17:37:41,837 [INFO] plugin_name: caching_sha2_password
+2026-01-07 17:37:41,839 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2026-01-07 17:37:41,844 [INFO] package: mysql.connector.plugins
+2026-01-07 17:37:41,849 [INFO] plugin_name: mysql_native_password
+2026-01-07 17:37:41,852 [INFO] AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2026-01-07 17:37:41,859 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2026-01-07 17:37:41,871 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2026-01-07 17:37:41,874 [INFO] DB: committed approx 2 rows (gem + main).
+2026-01-07 17:37:51,877 [ERROR] Connection to Redis lost: Retry (0/20) now.
+2026-01-07 17:37:55,959 [ERROR] Connection to Redis lost: Retry (1/20) in 1.00 second.
+2026-01-07 17:38:01,010 [ERROR] Connection to Redis lost: Retry (2/20) in 1.00 second.
+2026-01-07 17:38:06,071 [ERROR] Connection to Redis lost: Retry (3/20) in 1.00 second.
+2026-01-07 17:38:11,149 [ERROR] Connection to Redis lost: Retry (4/20) in 1.00 second.
+2026-01-07 17:38:16,225 [ERROR] Connection to Redis lost: Retry (5/20) in 1.00 second.
+2026-01-07 17:38:21,297 [ERROR] Connection to Redis lost: Retry (6/20) in 1.00 second.
+2026-01-07 17:38:26,351 [ERROR] Connection to Redis lost: Retry (7/20) in 1.00 second.
+2026-01-07 17:38:31,393 [ERROR] Connection to Redis lost: Retry (8/20) in 1.00 second.
+2026-01-07 17:38:32,999 [INFO] Queued 1 tasks to Redis/Docker.
+2026-01-07 17:38:38,863 [INFO] Attempting to insert 9 rows into Main_Relevency...
+2026-01-07 17:38:38,875 [INFO] Successfully inserted 9 rows into Main_Relevency.
+2026-01-07 17:38:38,879 [INFO] DB: committed approx 18 rows (gem + main).
+2026-01-07 17:38:38,931 [INFO] Queued 9 tasks to Redis/Docker.
+2026-01-07 17:39:03,114 [INFO] Found Representation JS trigger on element: view_representation_modal(8809962)
+2026-01-07 17:39:03,114 [INFO] Triggering modal via JS: view_representation_modal(8809962)
+2026-01-07 17:39:04,674 [INFO] Saved Representation JSON for GEM/2025/B/6769871
+2026-01-07 17:39:10,802 [INFO] Attempting to insert 1 rows into Main_Relevency...
+2026-01-07 17:39:10,807 [INFO] Successfully inserted 1 rows into Main_Relevency.
+2026-01-07 17:39:10,814 [INFO] DB: committed approx 2 rows (gem + main).
+2026-01-07 17:39:10,824 [INFO] Queued 1 tasks to Redis/Docker.
+2026-01-07 17:39:12,669 [INFO] Received stop signal — shutting down...
+2026-01-07 17:39:13,670 [INFO] Shutdown requested via KeyboardInterrupt
